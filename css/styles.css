@@ -1,0 +1,42 @@
+/* 新增导航栏样式 */
+.main-nav {
+    background: rgba(41, 128, 185, 0.8);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem; /* 调小间隙保持紧凑布局 */
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.main-nav a:hover {
+    opacity: 0.8;
+}
+
+.nav-logo {
+    font-weight: bold;
+    margin-right: 3rem;
+}
+
+.admin-link {
+    color: #ffeb3b !important;
+}
+
+/* 调整现有容器位置 */
+.validator-container {
+    margin-top: 80px;  /* 给导航栏留出空间 */
+    // ... 原有样式不变 ...
+}

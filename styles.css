@@ -1,0 +1,226 @@
+body {
+    background: url('img/background.png') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.validator-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 700px;
+    backdrop-filter: blur(5px);
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.2em;
+    display: flex;         
+    align-items: center;   
+    justify-content: center; 
+}
+
+h1 img {
+    height: 55px;  
+    width: 55px; 
+    padding-right: 15px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+#userInput {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid rgba(52, 152, 219, 0.3); /* 半透明边框 */
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.15); /* 增加透明度 */
+    backdrop-filter: blur(10px); /* 亚克力模糊效果 */
+    color: #2c3e50; /* 更清晰的文字颜色 */
+    transition: all 0.3s ease;
+}
+
+#userInput::placeholder {
+    color: rgba(44, 62, 80, 0.7); /* 半透明占位符 */
+}
+
+#userInput:focus {
+    background: rgba(255, 255, 255, 0.25); /* 聚焦时更明显 */
+    border-color: rgba(52, 152, 219, 0.6);
+    box-shadow: 0 0 12px rgba(52, 152, 219, 0.2);
+}
+
+button {
+    padding: 12px 25px;
+    background: rgba(52, 152, 219, 0.85); /* 半透明背景 */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    backdrop-filter: blur(5px); /* 按钮也添加模糊 */
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: rgba(41, 128, 185, 0.9);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.validator-container {
+    /* 增强容器模糊效果 */
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.25); /* 更透明 */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 发光边框 */
+}
+.question-select {
+    padding: 12px;
+    border: 2px solid rgba(52, 152, 219, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: #2c3e50;
+    min-width: 120px;
+}
+
+.success {
+    background: rgba(46, 204, 113, 0.15);
+    padding: 15px;
+    border-radius: 8px;
+    color: #27ae60;
+    margin-top: 10px;
+}
+
+.error {
+    background: rgba(231, 76, 60, 0.15);
+    padding: 15px;
+    border-radius: 8px;
+    color: #c0392b;
+    margin-top: 10px;
+}
+
+
+/* 新增导航栏样式 */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #002043;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 20px; /* 将导航链接推到右侧 */
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #3498db;
+}
+
+.site-title {
+    color: #ecf0f1;
+    font-size: 1.5em;
+    margin-left: 30px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.navbar ul li {
+    position: relative;
+}
+
+/* 移除所有 :hover 相关样式 */
+.submenu {
+    display: none;
+    position: absolute;
+    background: #333;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    top: 100%;
+    left: 0;
+    min-width: 160px;
+    z-index: 1000; /* 添加层级保证覆盖 */
+}
+
+.submenu.active {
+    display: block;
+}
+
+/* 防止父级链接跳转 */
+.navbar li > a[href="#"] {
+    cursor: pointer;
+}
+
+.submenu li {
+    margin: 5px 0;
+}
+
+
+/* 新增下拉菜单样式 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333; /* 改为黑灰色背景 */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white; /* 文字改为白色 */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #444; /* 悬停颜色加深 */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn:hover {
+    background-color: #2c3e50;
+}
+
+
