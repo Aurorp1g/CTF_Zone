@@ -10,6 +10,7 @@ function rstr(s) {
 
 const cA = new Map([
     ['shmily', '3D2691DqTjYSWTadFITTTA'],
+    ['hex2Virginia', 'uGKXGwEQ/9awSM0Cen8pnw'],
 ]);
 function rh(ip) {
     try {
