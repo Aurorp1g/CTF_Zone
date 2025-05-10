@@ -9,10 +9,7 @@ function rstr(s) {
 }
 
 const cA = new Map([
-    ['WEB渗透题', 'a1b2c3d4'],  
-    ['逆向工程题', 'e5f6g7h8'],
     ['shmily', '3D2691DqTjYSWTadFITTTA'],
-    ['杂项题', 'FNWmKf4U+07fOsi8VhrwJQ']
 ]);
 function rh(ip) {
     try {
