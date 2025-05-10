@@ -9,22 +9,22 @@
 </head>
 <body>
     <!-- 新增导航栏 -->
-    <nav class="navbar">
-        <span class="site-title">CTF Zone</span>
+    <nav class="navbar admin-navbar">  <!-- 新增管理员导航栏样式 -->
+        <span class="site-title">CTF Zone <sup class="admin-badge">ADMIN</sup></span>
         <ul>
-            <li><a href="index.html">首页</a></li>
+            <li><a href="encode.html">首页</a></li>
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">加密工具 ▼</a>
                 <div class="dropdown-content">
-                    <a href="base64.html">Base64 编码</a>
-                    <a href="md5.html">MD5 哈希</a>
-                    <a href="sha256.html">SHA-256 加密</a>
-                    <a href="urlencode.html">URL 编码</a>
-                    <a href="encode.html">文本加密</a>
+                    <a href="https://tool.jisuapi.com/">站长工具</a>
+                    <a href="http://www.esjson.com/">esjson在线工具</a>
+                    <a href="http://www.hiencode.com/">CTF 在线工具</a>
+                    <a href="https://factordb.com/index.php?">factordb 分解</a>
+                    <a href="https://ctf.bugku.com/tools.html">bugku 在线工具</a>
                 </div>
             </li>
-            <li><a href="#">题目列表</a></li>
             <li><a href="https://github.com/Aurorp1g">关于我</a></li>
+            <li><a href="index.html" class="logout-btn" title="退出管理模式">🚪 退出</a></li>
         </ul>
     </nav>
     <div class="validator-container">
@@ -33,8 +33,9 @@
             <input type="text" 
                    id="userInput" 
                    placeholder="请输入需要加密的文本..."
-                   autocomplete="off">
-            <button onclick="validateData()">加密</button>
+                   autocomplete="off"
+                   onkeypress="handleEnter(event)">
+            <button onclick="validateData()" class="admin-btn">加密</button>
         </div>
         <div id="result"></div>
     </div>
@@ -68,6 +69,65 @@
                 `;
             }
         }
+        function handleEnter(event) {
+            if (event.keyCode === 13) {
+                validateData();
+                event.preventDefault();
+            }
+        }
     </script>
 </body>
 </html>
+
+<style>
+    /* 新增管理员专属样式 */
+    .admin-navbar {
+        background: linear-gradient(45deg, #2c3e50, #34495e);
+        border-bottom: 2px solid #8e44ad;
+    }
+
+    .admin-badge {
+        color: #9b59b6;
+        font-size: 0.6em;
+        vertical-align: super;
+        text-shadow: 0 0 8px rgba(155,89,182,0.5);
+    }
+
+    .validator-container.admin-panel {
+        border: 2px solid #8e44ad;
+        background: rgba(46, 49, 55, 0.95);
+        box-shadow: 0 0 15px rgba(155,89,182,0.3);
+    }
+
+    #userInput:focus {
+        border-color: #9b59b6;
+        box-shadow: 0 0 8px rgba(155,89,182,0.3);
+    }
+
+    button.admin-btn {
+        background: #8e44ad;
+        transition: all 0.3s;
+    }
+
+    button.admin-btn:hover {
+        background: #9b59b6;
+        transform: scale(1.05);
+        box-shadow: 0 0 12px rgba(155,89,182,0.4);
+    }
+
+    .admin-mode-text {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        color: #9b59b6;
+        font-weight: bold;
+        animation: admin-glow 1.5s ease-in-out infinite;
+    }
+
+    @keyframes admin-glow {
+        0% { opacity: 0.8; }
+        50% { opacity: 1; text-shadow: 0 0 10px #9b59b6; }
+        100% { opacity: 0.8; }
+    }
+</style>
+<div class="admin-mode-text">🛡️ 管理员模式已激活</div>

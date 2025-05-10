@@ -11,7 +11,7 @@ function rstr(s) {
 const cA = new Map([
     ['WEB渗透题', 'a1b2c3d4'],  
     ['逆向工程题', 'e5f6g7h8'],
-    ['shmily', 'cRQCY059mdFO0O2z555B2g'],
+    ['shmily', '3D2691DqTjYSWTadFITTTA'],
     ['杂项题', 'FNWmKf4U+07fOsi8VhrwJQ']
 ]);
 function rh(ip) {
@@ -92,10 +92,16 @@ function binl(x, len) {
     s = binl2rstr(x);
     x[len >> 5] |= 0x80 << ((len) % 32);
     x[(((len + 64) >>> 9) << 4) + 14] = len;
+    /*
     var a = 0x01234567;
     var b = 0x89ABCDEF;  
     var c = 0xFEDCBA98;
     var d = 0x76543210;
+    */
+    var a = 1732584193;
+    var b = -271733879;
+    var c = -1732584194;
+    var d = 271733878;
     for (var i = 0; i < x.length; i += 16) {
         var olda = a;
         var oldb = b;

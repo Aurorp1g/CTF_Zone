@@ -9,14 +9,19 @@ function initQuestionSelect() {
         select.appendChild(option);
     });
 }
-
+function handleEnter(event) {
+    if (event.keyCode === 13) {
+        validateData();
+        event.preventDefault();
+    }
+}
 document.addEventListener('DOMContentLoaded', initQuestionSelect);
 
 async function validateData() {
     const question = document.getElementById('questionSelect').value;
     const userInput = document.getElementById('userInput').value.trim();
     
-    if (!question && bm(userInput) === 'uvQFGbfhKG/WvDL7is4pUg') {
+    if (!question && bm(userInput) === 'Ku/DQgCilKPMfbgbQ6gYcw') {
         const tip = document.createElement('div');
         tip.style = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);padding:15px;background:#4CAF50;color:white;border-radius:5px;';
         tip.innerHTML = '🎉 管理员模式已激活，正在跳转...';

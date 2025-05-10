@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <title>CTF题目列表</title>
+    <style>
+        /* 新增题目列表专属样式 */
+        .problem-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .category-card {
+            background: #2b2b2b;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .category-header {
+            background: #3a3a3a;
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+            font-size: 1.2em;
+            color: #00ff9d;
+        }
+
+        .problem-list {
+            padding: 15px;
+        }
+
+        .problem-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #404040;
+            transition: background 0.3s;
+        }
+
+        .problem-item:hover {
+            background: #363636;
+        }
+
+        .problem-status {
+            width: 100px;
+            text-align: center;
+            margin-right: 20px;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .unsolved { background: #ff4757; }
+        .solved { background: #2ed573; }
+        
+        /* 新增题目名称颜色 */
+        .problem-info h3 {
+            color: #FFFBE6;
+            margin-bottom: 8px;
+        }
+        
+        .problem-info p {
+            color: #FFFBE6;
+            opacity: 0.9;
+        }
+
+        .download-link {
+            color: #2e5dd5;
+            transition: color 0.3s;
+            margin-left: auto;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        .download-link:hover {
+            color: #7bed9f;
+            background: rgba(46, 213, 115, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <span class="site-title">CTF Zone</span>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">加密工具 ▼</a>
+                <div class="dropdown-content">
+                    <!-- 保持与主界面相同的下拉菜单内容 -->
+                    <a href="https://tool.jisuapi.com/">站长工具</a>
+                    <a href="http://www.esjson.com/">esjson在线工具</a>
+                    <a href="http://www.hiencode.com/">CTF 在线工具</a>
+                    <a href="https://factordb.com/index.php?">factordb 分解</a>
+                    <a href="https://ctf.bugku.com/tools.html">bugku 在线工具</a>
+                </div>
+            </li>
+            <li><a href="problem.html">题目列表</a></li>
+            <li><a href="https://github.com/Aurorp1g">关于我</a></li>
+        </ul>
+    </nav>
+<!--  题目列表页面 HTML 结构 
+    <div class="problem-container">
+         Web 安全 题目分类 
+        <div class="category-card">
+            <div class="category-header">Web 安全</div>
+            <div class="problem-list">
+                <div class="problem-item">
+                    <div class="problem-status">
+                        <span class="status-dot unsolved"></span>
+                        <small>未完成</small>
+                    </div>
+                    <div class="problem-info">
+                        <h3>题目1: SQL注入漏洞</h3>
+                        <p>难度：★☆☆☆☆</p>
+                        <p>通过注入获取管理员密码</p>
+                    </div>
+                </div>
+                 更多题目... 
+            </div>
+        </div>
+-->
+        <!-- Cryptography 题目分类 -->
+        <div class="category-card">
+            <div class="category-header">密码学</div>
+            <div class="problem-list">
+                <div class="problem-item">
+                    <div class="problem-info">
+                        <h3>题目1: shmily</h3>
+                        <p>难度：★★★☆☆</p>
+                        <p>猜猜有哪些加密方式</p>
+                    </div>
+                    <a href="./public/download/shmily.txt" download class="download-link">下载题目</a>
+                </div>
+                <!-- 更多题目... -->
+            </div>
+        </div>
+
+        <!-- 更多分类... -->
+    </div>
+</body>
+</html>
