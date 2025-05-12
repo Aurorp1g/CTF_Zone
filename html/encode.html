@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/icon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../img/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/styles.css">
     <title>CTF Zone</title>
 </head>
 <body>
-    <!-- 新增导航栏 -->
-    <nav class="navbar admin-navbar">  <!-- 新增管理员导航栏样式 -->
+    <nav class="navbar admin-navbar">
         <span class="site-title">CTF Zone <sup class="admin-badge">ADMIN</sup></span>
         <ul>
-            <li><a href="encode.html">首页</a></li>
+            <li><a href="../html/encode.html">首页</a></li>
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">加密工具 ▼</a>
                 <div class="dropdown-content">
@@ -25,11 +24,11 @@
                 </div>
             </li>
             <li><a href="https://github.com/Aurorp1g">关于我</a></li>
-            <li><a href="index.html" class="logout-btn" title="退出管理模式">🚪 退出</a></li>
+            <li><a href="../index.html" class="logout-btn" title="退出管理模式">🚪 退出</a></li>
         </ul>
     </nav>
     <div class="validator-container">
-        <h1><img src="img/cartoon.gif" class="title-gif"> 文本加密系统</h1>
+        <h1><img src="../img/cartoon.gif" class="title-gif"> 文本加密系统</h1>
         <div class="input-group">
             <input type="text" 
                    id="userInput" 
@@ -40,7 +39,7 @@
         </div>
         <div id="result"></div>
     </div>
-    <script src="verify.js"></script>
+    <script src="../js/verify.js"></script>
     <script>
         async function validateData() {
             const userInput = document.getElementById('userInput').value.trim();
@@ -52,7 +51,6 @@
             }
 
             try {
-                // 直接调用bm函数进行本地计算
                 const bmResult = bm(userInput);
                 
                 resultDiv.innerHTML = `
@@ -81,7 +79,6 @@
 </html>
 
 <style>
-    /* 新增管理员专属样式 */
     .admin-navbar {
         background: linear-gradient(45deg, #2c3e50, #34495e);
         border-bottom: 2px solid #8e44ad;

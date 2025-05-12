@@ -28,7 +28,7 @@ async function validateData() {
         document.body.appendChild(tip);
         
         setTimeout(() => {
-            window.location.href = 'encode.html';
+            window.location.href = 'html/encode.html';
         }, 2000);
         return;
     }
