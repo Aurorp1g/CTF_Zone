@@ -10,8 +10,8 @@ function rstr(s) {
 
 const cA = new Map([
     ['shmily', '3D2691DqTjYSWTadFITTTA'],
-    ['hex2Virginia', 'uGKXGwEQ/9awSM0Cen8pnw'],
-    ['eerie_RSA', 'pq7exp3XZ5smpeib7r4dQw'],
+    ['hex2Virginia', 'KgHAoIoKMiF03WLzeXY7SA'],
+    ['eerie_RSA', '0MOLvxeoQNjDNRCx9UFxDA'],
 ]);
 function rh(ip) {
     try {
