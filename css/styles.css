@@ -1,5 +1,5 @@
 body {
-    background: url('../img/background.png') no-repeat center center fixed;
+    background: url('https://images.weserv.nl/?url=https://aurorp1g.github.io/CTF_Zone/img/background.png') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     margin: 0;
