@@ -1,12 +1,19 @@
+/* 整体CSS样式  start*/
 body {
-    background: url('https://images.weserv.nl/?url=https://aurorp1g.github.io/CTF_Zone/img/background.png') no-repeat center center fixed;
-    background-size: cover;
     min-height: 100vh;
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
 }
 
 .validator-container {
@@ -216,3 +223,134 @@ button:hover {
 .dropbtn:hover {
     background-color: #2c3e50;
 }
+
+/* 整体CSS样式  end*/
+
+/* encode样式 start*/
+.admin-navbar {
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    border-bottom: 2px solid #8e44ad;
+}
+
+.admin-badge {
+    color: #9b59b6;
+    font-size: 0.6em;
+    vertical-align: super;
+    text-shadow: 0 0 8px rgba(155,89,182,0.5);
+}
+
+.validator-container.admin-panel {
+    border: 2px solid #8e44ad;
+    background: rgba(46, 49, 55, 0.95);
+    box-shadow: 0 0 15px rgba(155,89,182,0.3);
+}
+
+#userInput:focus {
+    border-color: #9b59b6;
+    box-shadow: 0 0 8px rgba(155,89,182,0.3);
+}
+
+button.admin-btn {
+    background: #8e44ad;
+    transition: all 0.3s;
+}
+
+button.admin-btn:hover {
+    background: #9b59b6;
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(155,89,182,0.4);
+}
+
+.admin-mode-text {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #9b59b6;
+    font-weight: bold;
+    animation: admin-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes admin-glow {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; text-shadow: 0 0 10px #9b59b6; }
+    100% { opacity: 0.8; }
+}
+/* encode样式 end*/
+
+/* problem样式 start*/
+.problem-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.category-card {
+    background: #2b2b2b;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.category-header {
+    background: #3a3a3a;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+    font-size: 1.2em;
+    color: #00ff9d;
+}
+
+.problem-list {
+    padding: 15px;
+}
+
+.problem-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #404040;
+    transition: background 0.3s;
+}
+
+.problem-item:hover {
+    background: #363636;
+}
+
+.problem-status {
+    width: 100px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.unsolved { background: #ff4757; }
+.solved { background: #2ed573; }
+
+.problem-info h3 {
+    color: #FFFBE6;
+    margin-bottom: 8px;
+}
+
+.problem-info p {
+    color: #FFFBE6;
+    opacity: 0.9;
+}
+
+.download-link {
+    color: #2e5dd5;
+    transition: color 0.3s;
+    margin-left: auto;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.download-link:hover {
+    color: #7bed9f;
+    background: rgba(46, 213, 115, 0.1);
+}
+/* problem样式 end*/

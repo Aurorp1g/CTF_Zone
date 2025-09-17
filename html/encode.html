@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../img/icon.ico" type="image/x-icon">
+    <link rel="icon" href="../assets/icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/styles.css">
     <title>CTF Zone</title>
 </head>
 <body>
+    <video autoplay muted loop id="bg-video">
+        <source src="../assets/background.mp4" type="video/mp4">
+    </video>
     <nav class="navbar admin-navbar">
         <span class="site-title">CTF Zone <sup class="admin-badge">ADMIN</sup></span>
         <ul>
@@ -28,7 +31,7 @@
         </ul>
     </nav>
     <div class="validator-container">
-        <h1><img src="../img/cartoon.gif" class="title-gif"> 文本加密系统</h1>
+        <h1><img src="../assets/cartoon.gif" class="title-gif"> 文本加密系统</h1>
         <div class="input-group">
             <input type="text" 
                    id="userInput" 
@@ -77,55 +80,4 @@
     </script>
 </body>
 </html>
-
-<style>
-    .admin-navbar {
-        background: linear-gradient(45deg, #2c3e50, #34495e);
-        border-bottom: 2px solid #8e44ad;
-    }
-
-    .admin-badge {
-        color: #9b59b6;
-        font-size: 0.6em;
-        vertical-align: super;
-        text-shadow: 0 0 8px rgba(155,89,182,0.5);
-    }
-
-    .validator-container.admin-panel {
-        border: 2px solid #8e44ad;
-        background: rgba(46, 49, 55, 0.95);
-        box-shadow: 0 0 15px rgba(155,89,182,0.3);
-    }
-
-    #userInput:focus {
-        border-color: #9b59b6;
-        box-shadow: 0 0 8px rgba(155,89,182,0.3);
-    }
-
-    button.admin-btn {
-        background: #8e44ad;
-        transition: all 0.3s;
-    }
-
-    button.admin-btn:hover {
-        background: #9b59b6;
-        transform: scale(1.05);
-        box-shadow: 0 0 12px rgba(155,89,182,0.4);
-    }
-
-    .admin-mode-text {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        color: #9b59b6;
-        font-weight: bold;
-        animation: admin-glow 1.5s ease-in-out infinite;
-    }
-
-    @keyframes admin-glow {
-        0% { opacity: 0.8; }
-        50% { opacity: 1; text-shadow: 0 0 10px #9b59b6; }
-        100% { opacity: 0.8; }
-    }
-</style>
 <div class="admin-mode-text">🛡️ 管理员模式已激活</div>

@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/icon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/styles.css">
     <title>CTF Zone</title>
 </head>
 <body>
+    <video autoplay muted loop id="bg-video">
+        <source src="assets/background.mp4" type="video/mp4">
+    </video>
     <nav class="navbar">
         <span class="site-title">CTF Zone</span>
         <ul>
@@ -28,7 +31,7 @@
         </ul>
     </nav>
     <div class="validator-container">
-        <h1><img src="img/cartoon.gif" class="title-gif"> Flag校验系统</h1>
+        <h1><img src="assets/cartoon.gif" class="title-gif"> Flag校验系统</h1>
         <div class="input-group">
             <select id="questionSelect" class="question-select">
                 <option value="">请选择题目</option>

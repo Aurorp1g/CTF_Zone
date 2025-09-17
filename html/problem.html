@@ -3,88 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../img/icon.ico" type="image/x-icon">
+    <link rel="icon" href="../assets/icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/styles.css">
     <title>CTF题目列表</title>
-    <style>
-        .problem-container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-
-        .category-card {
-            background: #2b2b2b;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .category-header {
-            background: #3a3a3a;
-            padding: 15px;
-            border-radius: 8px 8px 0 0;
-            font-size: 1.2em;
-            color: #00ff9d;
-        }
-
-        .problem-list {
-            padding: 15px;
-        }
-
-        .problem-item {
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            border-bottom: 1px solid #404040;
-            transition: background 0.3s;
-        }
-
-        .problem-item:hover {
-            background: #363636;
-        }
-
-        .problem-status {
-            width: 100px;
-            text-align: center;
-            margin-right: 20px;
-        }
-
-        .status-dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .unsolved { background: #ff4757; }
-        .solved { background: #2ed573; }
-        
-        .problem-info h3 {
-            color: #FFFBE6;
-            margin-bottom: 8px;
-        }
-        
-        .problem-info p {
-            color: #FFFBE6;
-            opacity: 0.9;
-        }
-
-        .download-link {
-            color: #2e5dd5;
-            transition: color 0.3s;
-            margin-left: auto;
-            padding: 6px 12px;
-            border-radius: 4px;
-        }
-
-        .download-link:hover {
-            color: #7bed9f;
-            background: rgba(46, 213, 115, 0.1);
-        }
-    </style>
 </head>
 <body>
+    <video autoplay muted loop id="bg-video">
+        <source src="../assets/background.mp4" type="video/mp4">
+    </video>
     <nav class="navbar">
         <span class="site-title">CTF Zone</span>
         <ul>
