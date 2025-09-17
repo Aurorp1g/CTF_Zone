@@ -1,19 +1,13 @@
 /* 整体CSS样式  start*/
 body {
+    background: url('https://images.weserv.nl/?url=https://aurorp1g.github.io/CTF_Zone/assets/background.png') no-repeat center center fixed;
+    background-size: cover;
     min-height: 100vh;
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-#bg-video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -1;
 }
 
 .validator-container {
