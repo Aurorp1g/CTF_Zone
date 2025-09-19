@@ -1,23 +1,16 @@
-/* =====  设计令牌  ===== */
 :root{
-  /* 主色 */
   --prime: #00f2ff;
   --second: #ff00c1;
-  /* 背景 */
   --bg-dark: #0d0f18;
   --bg-card: rgba(29, 32, 47, 0.55);
-  /* 文字 */
   --text: #e0e6f0;
   --text-dim: #8a93b5;
-  /* 阴影 */
   --glow: 0 0 12px var(--prime), 0 0 20px var(--second);
   --shadow: 0 8px 32px rgba(0,0,0,.36);
-  /* 圆角 / 过渡 */
   --r: 12px;
   --t: .3s ease;
 }
 
-/* =====  全局重置  ===== */
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family: "Inter",system-ui,sans-serif;
@@ -28,7 +21,6 @@ body{
   flex-direction: column;
 }
 
-/* =====  导航栏  ===== */
 .navbar{
   position: fixed;
   inset: 0 0 auto;
@@ -76,7 +68,6 @@ body{
     margin: 0 25px;
 }
 
-/* 下拉 */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -101,7 +92,6 @@ body{
     display: block;
 }
 
-/* =====  主卡片  ===== */
 .validator-container{
   width:90%;max-width:900px;
   margin: auto;
@@ -123,7 +113,6 @@ body{
 }
 .title-gif{width:50px;height:50px}
 
-/* 动态选项样式 */
 select {
   background: var(--bg-card);
   border-radius: var(--r);
@@ -142,7 +131,6 @@ option:hover {
   color: var(--prime);
 }
 
-/* 结果 */
 #result{margin-top:1.25rem}
 .success,.error{
   padding:1rem 1.25rem;
@@ -154,7 +142,6 @@ option:hover {
 .error{background:rgba(255,0,193,.12);color:var(--second);border-left:4px solid var(--second)}
 @keyframes slideUp{from{opacity:0;transform:translateY(15px)}}
 
-/* =====  题目页  ===== */
 .problem-container{
   width:90%;max-width:1000px;
   margin:6rem auto 3rem;
@@ -196,7 +183,6 @@ option:hover {
 }
 .download-link:hover{background:var(--prime);color:var(--bg-dark)}
 
-/* =====  管理页  ===== */
 .admin-navbar{border-bottom-color:rgba(255,0,193,.25)}
 .admin-badge{color:var(--second);text-shadow:0 0 6px var(--second)}
 .admin-btn{background:linear-gradient(90deg,var(--second),#ff4dff)}
@@ -211,7 +197,6 @@ option:hover {
 }
 @keyframes adminPulse{50%{box-shadow:0 0 15px var(--second)}}
 
-/* =====  响应式  ===== */
 @media(max-width:768px){
   .navbar ul{flex-direction:column;gap:.5rem}
   .validator-container{margin:7rem 1rem 2rem;padding:2rem 1.5rem}
@@ -219,7 +204,6 @@ option:hover {
   .problem-item{flex-direction: column;align-items:flex-start;gap:.75rem}
 }
 
-/* 题目卡片微光 */
 .problem-item{position:relative;overflow:hidden}
 .problem-item::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(0,242,255,.2),transparent);transition:left .6s}
 .problem-item:hover::before{left:150%}
@@ -241,8 +225,7 @@ option:hover {
 }
 
 
-/* ========== 题目列表独立滚动 ========== */
-#particles-js{                      /* 粒子背景保持 fixed */
+#particles-js{                      
     position: fixed;
     top: 0;
     left: 0;
@@ -251,15 +234,14 @@ option:hover {
     z-index: -1;
 }
 
-.problem-scroll-wrapper{            /* 新增滚动容器 */
-    position: relative;             /* 为粒子背景保留层级 */
-    max-height: calc(100vh - 70px); /* 减去导航栏高度（70px） */
-    overflow-y: auto;               /* 仅内部滚动 */
+.problem-scroll-wrapper{            
+    position: relative;             
+    max-height: calc(100vh - 70px); 
+    overflow-y: auto;               
     -webkit-overflow-scrolling: touch;
-    padding-top: 1rem;              /* 与导航留间距 */
+    padding-top: 1rem;              
 }
 
-/* 让页脚始终可见 */
 footer.footer{
     position: relative;
     z-index: 1;

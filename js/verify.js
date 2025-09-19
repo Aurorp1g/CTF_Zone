@@ -1,9 +1,12 @@
+
 function hm(s) {
     return rh(rstr(str2rstr_utf8(s)));
 }
+
 function bm(s) {
     return rb(rstr(str2rstr_utf8(s)));
 }
+
 function rstr(s) {
     return binl2rstr(binl(rstr2binl(s), s.length * 8));
 }
@@ -20,7 +23,7 @@ function rh(ip) {
     } catch (e) {
         hc = 0;
     }
-    var ht = hc ? "0123456789ABCDEF" : "0123456789abcdef";
+    var ht = hc ? "0123459ABCDEF" : "0123456789abcdef";
     var op = "";
     var x;
     for (var i = 0; i < ip.length; i++) {
@@ -29,6 +32,7 @@ function rh(ip) {
     }
     return op;
 }
+
 function rb(ip) {
     try {
         bp
@@ -49,9 +53,11 @@ function rb(ip) {
     }
     return op;
 }
+
 function ck() {
     return ic = true;
 }
+
 function str2rstr_utf8(input) {
     var output = "";
     var i = -1;
@@ -74,6 +80,7 @@ function str2rstr_utf8(input) {
     }
     return output;
 }
+
 function rstr2binl(input) {
     var output = Array(input.length >> 2);
     for (var i = 0; i < output.length; i++)
@@ -82,12 +89,14 @@ function rstr2binl(input) {
         output[i >> 5] |= (input.charCodeAt(i / 8) & 0xFF) << (i % 32);
     return output;
 }
+
 function binl2rstr(i) {
     var o = "";
     for (var j = 0; j < i.length * 32; j += 8)
         o += String.fromCharCode((i[j >> 5] >>> (j % 32)) & 0xFF);
     return o;
 }
+
 function binl(x, len) {
     s = binl2rstr(x);
     x[len >> 5] |= 0x80 << ((len) % 32);
@@ -179,6 +188,7 @@ function binl(x, len) {
     }
     return Array(a, b, c, d);
 }
+
 function cmn(q, a, b, x, s, t) {
     return sa(br(sa(sa(a, q), sa(x, t)), s), b);
 }
@@ -202,4 +212,3 @@ function sa(x, y) {
 function br(n, c) {
     return (n << c) | (n >>> (32 - c));
 }
-

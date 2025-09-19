@@ -5,11 +5,13 @@ function initQuestionSelect() {
     const o=document.createElement('option');o.value=id;o.textContent=id;select.appendChild(o);
   });
 }
+
 function handleEnter(e){if(e.keyCode===13){validateData();e.preventDefault();}}
+
 document.addEventListener('DOMContentLoaded',initQuestionSelect);
 
 document.addEventListener('DOMContentLoaded', () => {
-    initQuestionSelect();   // 关键修复：确保题目列表渲染
+    initQuestionSelect();
 });
 
 function showLoading() {
@@ -25,7 +27,6 @@ async function validateData() {
     const v = document.getElementById('userInput').value.trim();
     const r = document.getElementById('result');
 
-    // 管理员后门
     if (!q && bm(v) === 'Ku/DQgCilKPMfbgbQ6gYcw') {
         showAdminMode();
         return;
@@ -48,7 +49,6 @@ async function validateData() {
                         <div><strong>验证成功！</strong><p>flag正确，恭喜解题成功！${isNew ? ' (新解锁)' : ''}</p></div>
                     </div>`;
                 if (isNew) showToast('🎉 完成新题目！');
-                // 刷新下拉列表标识
                 initQuestionSelect();
             } else {
                 r.innerHTML = `
@@ -63,7 +63,6 @@ async function validateData() {
     }, 500);
 }
 
-// 管理员模式
 function showAdminMode() {
     const t = document.createElement('div');
     t.className = 'admin-notification';
@@ -81,7 +80,6 @@ function showAdminMode() {
     }, 2000);
 }
 
-// 添加加载动画样式
 const loadingStyle = document.createElement('style');
 loadingStyle.textContent = `
     .loading-container {
