@@ -11,7 +11,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>CTF Zone</title>
 </head>
-<body>
+<body class="home">
+    <!-- 启动遮罩 -->
+    <div id="boot">
+        <div class="stage">
+            <div class="term"></div>
+        </div>
+    </div>
     <div id="particles-js"></div>
     
     <nav class="navbar">
@@ -136,7 +142,7 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2024 BY Aurorp1g. All rights reserved.</p>
+            <p>&copy; 2024 BY Aurorp1g.FosuSec Crypto.</p>
             <div class="footer-links">
                 <a href="https://github.com/Aurorp1g" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://space.bilibili.com/2066996205" target="_blank"><i class="fab fa-bilibili"></i></a>
@@ -151,5 +157,67 @@
     <script src="js/main.js"></script>
     <script src="js/improvements.js"></script>
     <script src="js/common.js"></script>
+    <script>
+        (()=>{
+          if(sessionStorage.getItem('bootDone')){
+            document.getElementById('boot').remove();
+            return;
+         }
+
+         const term  = document.querySelector('.term');
+         const raw = ['CTF Zone...','Initialising... done','Loading challenges... 100%','Ready.'];
+         const prefix = '>>> ';
+
+         let lineIndex = 0, charIndex = 0;
+
+         function newEmptyLine(){
+           const line = document.createElement('div');
+           line.className = 'line';
+          term.appendChild(line);
+           return line;
+         }
+
+         function injectPrefix(line){
+            const pre = document.createElement('span');
+            pre.className = 'prompt'; 
+            pre.textContent = '>>> ';
+            line.appendChild(pre);
+
+            const txt = document.createElement('span');
+            txt.className = 'text';
+            line.append(txt);
+
+            const cur = document.createElement('span');
+            cur.className = 'cursor';
+            cur.textContent = '|';
+            line.append(cur);
+
+            return txt;
+         }
+
+        let curLine = newEmptyLine();
+        let txtSpan;
+
+        function type(){
+          if(lineIndex < raw.length){
+            if(charIndex === 0) txtSpan = injectPrefix(curLine);
+
+           if(charIndex < raw[lineIndex].length){
+              txtSpan.textContent += raw[lineIndex][charIndex++];
+              setTimeout(type, 100);
+            }else{
+              curLine.querySelector('.cursor').remove();
+              lineIndex++; charIndex = 0;
+             curLine = newEmptyLine(); 
+             setTimeout(type, 1500);
+            }
+          }else{
+            sessionStorage.setItem('bootDone', '1');
+            setTimeout(()=>document.getElementById('boot').remove(), 300);
+          }
+         }
+         type();
+        })();
+    </script>
 </body>
 </html>

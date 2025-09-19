@@ -101,12 +101,6 @@ function binl(x, len) {
     s = binl2rstr(x);
     x[len >> 5] |= 0x80 << ((len) % 32);
     x[(((len + 64) >>> 9) << 4) + 14] = len;
-    /*
-    var a = 0x01234567;
-    var b = 0x89ABCDEF;  
-    var c = 0xFEDCBA98;
-    var d = 0x76543210;
-    */
     var a = 1732584193;
     var b = -271733879;
     var c = -1732584194;

@@ -21,6 +21,40 @@ body{
   flex-direction: column;
 }
 
+.home::after {
+    content: "_";
+    animation: home-blink 1s infinite;
+}
+
+@keyframes home-blink {
+    50% { opacity: 0; }
+}
+
+#boot{position:fixed;inset:0;background:#000;z-index:9999}
+.stage{                    
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:55vw; height:45vh;   
+}
+.term{                     
+  font:1.5rem/1.4 monospace;
+  color:#00f2ff;
+  padding:1rem 0;          
+}
+.line{height:1.4em;white-space:pre;position:relative}
+.cursor{                   
+  display:none;
+}
+.line.active .cursor{      
+  display:inline;
+  animation:blink 1s steps(2,start) infinite;
+}
+.prompt{font-size:1.0rem;color:#00ffa0;}   
+.cursor{display:inline-block;animation:blink 1s steps(2,start) infinite}
+@keyframes blink{50%{opacity:0}}
+
+
 .navbar{
   position: fixed;
   inset: 0 0 auto;
@@ -214,6 +248,17 @@ option:hover {
   animation:charge 2s linear infinite;
 }
 @keyframes charge{to{background-position:200% 0}}
+
+#userInput:focus {
+  background: linear-gradient(to bottom, rgba(0,242,255,0.05) 0%, rgba(0,242,255,0.15) 50%, rgba(0,242,255,0.05) 100%);
+  background-size: 100% 4px;
+  background-position: 0 0;
+  animation: scanline 1.5s linear infinite;
+}
+@keyframes scanline {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
 
 .problem-item{
   transform-style:preserve-3d;
