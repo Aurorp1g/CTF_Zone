@@ -5,77 +5,228 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/bg-math.css">
-    <title>CTF Zone</title>
+    <link rel="stylesheet" href="../css/improvements.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>文本加密系统 | CTF Zone</title>
 </head>
 <body>
+    <div id="particles-js"></div>
+
     <nav class="navbar admin-navbar">
-        <span class="site-title">CTF Zone <sup class="admin-badge">ADMIN</sup></span>
-        <ul>
-            <li><a href="../html/encode.html">首页</a></li>
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">解密工具 ▼</a>
-                <div class="dropdown-content">
-                    <a href="https://tool.jisuapi.com/" target="_blank" rel="noopener noreferrer">站长工具</a>
-                    <a href="http://www.esjson.com/" target="_blank" rel="noopener noreferrer">esjson在线工具</a>
-                    <a href="http://www.hiencode.com/" target="_blank" rel="noopener noreferrer">CTF 在线工具</a>
-                    <a href="https://factordb.com/index.php?" target="_blank" rel="noopener noreferrer">factordb 分解</a>
-                    <a href="https://ctf.bugku.com/tools.html" target="_blank" rel="noopener noreferrer">bugku 在线工具</a>
-                    <a href="https://lzltool.cn/" target="_blank" rel="noopener noreferrer">LZL 在线工具</a>
-                </div>
-            </li>
-            <li><a href="https://github.com/Aurorp1g">关于我</a></li>
-            <li><a href="../index.html" class="logout-btn" title="退出管理模式">🚪 退出</a></li>
-        </ul>
-    </nav>
-    <div class="validator-container">
-        <h1><img src="../assets/cartoon.gif" class="title-gif"> 文本加密系统</h1>
-        <div class="input-group">
-            <input type="text" 
-                   id="userInput" 
-                   placeholder="请输入需要加密的文本..."
-                   autocomplete="off"
-                   onkeypress="handleEnter(event)">
-            <button onclick="validateData()" class="admin-btn">加密</button>
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="../assets/icon.ico" alt="Logo" class="nav-logo">
+                <span class="site-title">CTF Zone </span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../html/encode.html" class="nav-link active"><i class="fas fa-home"></i> 管理首页</a></li>
+                <li class="nav-item dropdown">
+                    <a href="javascript:void(0)" class="nav-link dropbtn"><i class="fas fa-tools"></i> 解密工具 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="https://tool.jisuapi.com/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> 站长工具</a>
+                        <a href="http://www.esjson.com/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> esjson在线工具</a>
+                        <a href="http://www.hiencode.com/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> CTF 在线工具</a>
+                        <a href="https://factordb.com/index.php?" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> factordb 分解</a>
+                        <a href="https://ctf.bugku.com/tools.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> bugku 在线工具</a>
+                        <a href="https://lzltool.cn/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> LZL 在线工具</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="https://github.com/Aurorp1g" class="nav-link" target="_blank"><i class="fab fa-github"></i> 关于我</a></li>
+                <li class="nav-item"><a href="../index.html" class="nav-link logout-btn" title="退出管理模式"><i class="fas fa-sign-out-alt"></i> 退出</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <div id="result"></div>
-    </div>
-    <script src="../js/verify.js"></script>
+    </nav>
+
+    <main class="main-content">
+        <div class="validator-container">
+            <div class="container-header">
+                <img src="../assets/cartoon.gif" class="title-gif" alt="Encrypt">
+                <h1>文本加密系统</h1>
+                <p class="subtitle">输入任意文本，生成哈希值</p>
+            </div>
+
+            <div class="input-group-admins">
+                <div class="input-wrapper full-width">
+                    <input type="text" id="userInput" placeholder="请输入需要加密的文本..." autocomplete="off" onkeypress="handleEnter(event)">
+                    <i class="fas fa-keyboard input-icon"></i>
+                </div>
+                <button onclick="validateData()" class="validate-btn admin-btn">
+                    <i class="fas fa-lock"></i> 加密
+                </button>
+            </div>
+
+            <div id="result" class="result-container"></div>
+
+            <div class="quick-actions">
+                <button class="quick-btn" onclick="clearInput()"><i class="fas fa-eraser"></i> 清空</button>
+                <button class="quick-btn" onclick="copyHash()"><i class="fas fa-copy"></i> 复制结果</button>
+                <button class="quick-btn admin-danger" onclick="clearSolvedList()"><i class="fas fa-trash-alt"></i> 清除解题进度</button>
+            </div>
+        </div>
+    </main>
+
+    <div class="admin-mode-text"><i class="fas fa-shield-alt"></i> 管理员模式已激活</div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 BY Aurorp1g. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/Aurorp1g" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://space.bilibili.com/2066996205" target="_blank"><i class="fab fa-bilibili"></i></a>
+            </div>
+        </div>
+    </footer>
     <script>
-        async function validateData() {
+    /* ========== 管理员钥匙验证 ========== */
+    (function(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const key = urlParams.get('key');
+    const correctKey = 'Ku/DQgCilKPMfbgbQ6gYcw';
+
+    if (key !== correctKey) {
+        document.body.innerHTML = `
+        <style>
+            body {
+            background: #111;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+            }
+            .lock-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #f87171;
+            }
+        </style>
+        <i class="fas fa-lock lock-icon"></i>
+        <h1>403 Forbidden</h1>
+        <p>你没有权限访问此页面。</p>
+        `;
+        throw new Error('Access denied');
+    }
+    })();
+    </script>
+    <link rel="stylesheet" href="../css/bg-math.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/particles-config.js"></script>
+    <script src="../js/verify.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        /* ---------- 与改进版 main.js 保持一致的交互 ---------- */
+        function handleEnter(e){if(e.keyCode===13){validateData();e.preventDefault();}}
+
+        async function validateData(){
             const userInput = document.getElementById('userInput').value.trim();
             const resultDiv = document.getElementById('result');
             
             if (!userInput) {
-                resultDiv.innerHTML = `<div class="error">⚠ 请输入需要校验的内容</div>`;
+                resultDiv.innerHTML = `<div class="error"><i class="fas fa-exclamation-triangle"></i> 请输入需要加密的内容</div>`;
                 return;
             }
 
-            try {
-                const bmResult = bm(userInput);
-                
-                resultDiv.innerHTML = `
-                    <div class="success">
-                        ✅ 哈希生成完成
-                        <div class="hash-display">${bmResult}</div>
-                    </div>
-                `;
-                
-            } catch (error) {
-                resultDiv.innerHTML = `
-                    <div class="error">
-                        ⚠ 处理错误：${error.message || '无效输入'}
-                    </div>
-                `;
+            showLoading();                       // 统一加载动画
+            setTimeout(()=>{
+                try{
+                    const bmResult = bm(userInput);
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>哈希生成完成</strong>
+                                <div class="hash-display">${bmResult}</div>
+                            </div>
+                        </div>`;
+                    window.lastHash = bmResult;  // 供复制使用
+                }catch(error){
+                    resultDiv.innerHTML = `<div class="error"><i class="fas fa-exclamation-triangle"></i> 处理错误：${error.message||'无效输入'}</div>`;
+                }
+            },500);
+        }
+
+        function showLoading(){
+            const resultDiv=document.getElementById('result');
+            resultDiv.innerHTML=`
+                <div class="loading-container">
+                    <div class="loading"></div><span>正在计算...</span>
+                </div>`;
+        }
+        function clearInput(){
+            document.getElementById('userInput').value='';
+            document.getElementById('result').innerHTML='';
+        }
+        function copyHash(){
+            if(window.lastHash){
+                navigator.clipboard.writeText(window.lastHash).then(()=>{
+                    /* 轻提示 */
+                    const toast=document.createElement('div');toast.className='toast';
+                    toast.innerHTML='<i class="fas fa-copy"></i> 已复制到剪贴板';
+                    document.body.appendChild(toast);
+                    setTimeout(()=>toast.remove(),2000);
+                });
             }
         }
-        function handleEnter(event) {
-            if (event.keyCode === 13) {
-                validateData();
-                event.preventDefault();
-            }
+        /* ========== 清除 SOLVED_LIST ========== */
+        function clearSolvedList() {
+            // 二次确认
+            if (!confirm('⚠️ 确定要清空所有解题进度吗？\n（操作不可恢复）')) return;
+
+            // 删除本地存储项
+            localStorage.removeItem('ctf_solved_list');
+
+            // 立即重置统计面板（若当前页有展示）
+            const solvedEl = parent.document?.getElementById('solvedProblems');
+            const rateEl   = parent.document?.getElementById('completionRate');
+            if (solvedEl) solvedEl.textContent = '0';
+            if (rateEl)   rateEl.textContent   = '0%';
+
+            // 成功提示
+            const toast = document.createElement('div');
+            toast.className = 'toast toast-warn';
+            toast.innerHTML = '<i class="fas fa-check"></i> 解题进度已清空';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
         }
+
+        /* ========== 样式：危险按钮 ========== */
+        const style = document.createElement('style');
+        style.textContent = `
+        .admin-danger{
+            background: linear-gradient(135deg,#fa709a 0%,#fee140 100%);
+            color: #fff;
+        }
+        .admin-danger:hover{
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(250, 112, 154, .4);
+        }
+        /* Toast 警告色 */
+        .toast-warn{
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg,#fa709a 0%,#fee140 100%);
+            color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.3);
+            z-index: 2000;
+            animation: slideInRight .3s ease-out;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+        @keyframes slideInRight{from{opacity:0;transform:translateX(100px)}to{opacity:1;transform:translateX(0)}}
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
-<div class="admin-mode-text">🛡️ 管理员模式已激活</div>

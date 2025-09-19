@@ -6,59 +6,114 @@
     <link rel="icon" href="../assets/icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/bg-math.css">
-    <title>CTF题目列表</title>
+    <link rel="stylesheet" href="../css/improvements.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>题目列表 | CTF Zone</title>
 </head>
 <body>
+    <div id="particles-js"></div>
+
     <nav class="navbar">
-        <span class="site-title">CTF Zone</span>
-        <ul>
-            <li><a href="../index.html">首页</a></li>
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">解密工具 ▼</a>
-                <div class="dropdown-content">
-                    <a href="https://tool.jisuapi.com/" target="_blank" rel="noopener noreferrer">站长工具</a>
-                    <a href="http://www.esjson.com/" target="_blank" rel="noopener noreferrer">esjson在线工具</a>
-                    <a href="http://www.hiencode.com/" target="_blank" rel="noopener noreferrer">CTF 在线工具</a>
-                    <a href="https://factordb.com/index.php?" target="_blank" rel="noopener noreferrer">factordb 分解</a>
-                    <a href="https://ctf.bugku.com/tools.html" target="_blank" rel="noopener noreferrer">bugku 在线工具</a>
-                    <a href="https://lzltool.cn/" target="_blank" rel="noopener noreferrer">LZL 在线工具</a>
-                </div>
-            </li>
-            <li><a href="../html/problem.html">题目列表</a></li>
-            <li><a href="https://github.com/Aurorp1g">关于我</a></li>
-        </ul>
-    </nav>
-    <!-- 题目列表页面 HTML 结构 -->
-    <div class="problem-container">
-        <div class="category-card">
-            <div class="category-header">密码学</div>
-            <div class="problem-list">
-                <div class="problem-item">
-                    <div class="problem-info">
-                        <h3>shmily</h3>
-                        <p>难度：★★★☆☆</p>
-                        <p>猜猜有哪些加密方式</p>
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="../assets/icon.ico" alt="Logo" class="nav-logo">
+                <span class="site-title">CTF Zone</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> 首页</a></li>
+                <li class="nav-item dropdown">
+                    <a href="javascript:void(0)" class="nav-link dropbtn"><i class="fas fa-tools"></i> 解密工具 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="https://tool.jisuapi.com/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> 站长工具</a>
+                        <a href="http://www.esjson.com/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> esjson在线工具</a>
+                        <a href="http://www.hiencode.com/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> CTF 在线工具</a>
+                        <a href="https://factordb.com/index.php?" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> factordb 分解</a>
+                        <a href="https://ctf.bugku.com/tools.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> bugku 在线工具</a>
+                        <a href="https://lzltool.cn/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> LZL 在线工具</a>
                     </div>
-                    <a href="../public/download/shmily.txt" download class="download-link">下载题目</a>
-                </div>
-                <div class="problem-item">
-                    <div class="problem-info">
-                        <h3>hex2Virginia</h3>
-                        <p>难度：★★★☆☆</p>
-                        <p>很明显了，不是么？</p>
-                    </div>
-                    <a href="../public/download/hex2Virginia.txt" download class="download-link">下载题目</a>
-                </div>
-                <div class="problem-item">
-                    <div class="problem-info">
-                        <h3>eerie_RSA</h3>
-                        <p>难度：★★★☆☆</p>
-                        <p>诡异的RSA</p>
-                    </div>
-                    <a href="../public/download/eerie_RSA.zip" download class="download-link">下载题目</a>
-                </div>
+                </li>
+                <li class="nav-item"><a href="../html/problem.html" class="nav-link active"><i class="fas fa-list"></i> 题目列表</a></li>
+                <li class="nav-item"><a href="https://github.com/Aurorp1g" class="nav-link" target="_blank"><i class="fab fa-github"></i> 关于我</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
+    </nav>
+
+    <div class="problem-scroll-wrapper">
+        <main class="main-content">
+            <div class="problem-container">
+                <div class="category-card">
+                    <div class="category-header">
+                        <i class="fas fa-folder-open"></i> 密码学
+                    </div>
+                    <div class="problem-list">
+                        <div class="problem-item difficulty-★★★☆☆">
+                        <div class="problem-info">
+                            <h3>shmily</h3>
+                            <p>难度：★★★☆☆</p>
+                            <p>猜猜有哪些加密方式</p>
+                        </div>
+                            <a href="../public/download/shmily.txt" download class="download-link">
+                                <i class="fas fa-download"></i> 下载题目
+                            </a>
+                        </div>
+                        <div class="problem-item difficulty-★★★☆☆">
+                        <div class="problem-info">
+                            <h3>hex2Virginia</h3>
+                            <p>难度：★★★☆☆</p>
+                            <p>很明显了，不是么？</p>
+                        </div>
+                            <a href="../public/download/hex2Virginia.txt" download class="download-link">
+                                <i class="fas fa-download"></i> 下载题目
+                            </a>
+                        </div>
+                        <div class="problem-item difficulty-★★★☆☆">
+                        <div class="problem-info">
+                            <h3>eerie_RSA</h3>
+                            <p>难度：★★★☆☆</p>
+                            <p>诡异的RSA</p>
+                        </div>
+                            <a href="../public/download/eerie_RSA.zip" download class="download-link">
+                                <i class="fas fa-download"></i> 下载题目
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 BY Aurorp1g. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/Aurorp1g" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://space.bilibili.com/2066996205" target="_blank"><i class="fab fa-bilibili"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/particles-config.js"></script>
+    <script src="../js/improvements.js"></script>
+    <script src="../js/common.js"></script>
+
+    <script>
+        const observer=new IntersectionObserver(entries=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting) entry.target.style.opacity=1;
+            });
+        },{threshold:0.2});
+        document.querySelectorAll('.problem-item').forEach(el=>{
+            el.style.opacity=0;
+            el.style.transition='opacity 0.6s';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
