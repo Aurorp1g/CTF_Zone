@@ -3,19 +3,31 @@ const STORAGE_KEYS = {
     SOLVED_LIST:    'ctf_solved_list'
 };
 
+const animTimers = new Map(); 
+
 function animateValue(el, start, end, duration, suffix = '') {
     if (!el) return;
+
+    if (animTimers.has(el)) {
+        clearInterval(animTimers.get(el));
+        animTimers.delete(el);
+    }
+
     const range = end - start;
     const inc   = range / (duration / 16);
     let current = start;
+
     const timer = setInterval(() => {
         current += inc;
         if ((inc > 0 && current >= end) || (inc < 0 && current <= end)) {
             current = end;
             clearInterval(timer);
+            animTimers.delete(el); 
         }
         el.textContent = Math.floor(current) + suffix;
     }, 16);
+
+    animTimers.set(el, timer); 
 }
 
 function initStats() {
