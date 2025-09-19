@@ -1,0 +1,64 @@
+:root {
+  --grid-color: rgba(0, 242, 255, 0.08);
+  --grid-glow: rgba(0, 242, 255, 0.38);
+  --formula-color: rgba(255, 0, 193, 0.55);
+  --anim-speed: 20s;
+}
+body {
+  background:
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(180deg, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 0.5px, transparent 0.5px 20px),
+    linear-gradient(180deg, var(--grid-color) 0.5px, transparent 0.5px 20px),
+    radial-gradient(circle at 20% 30%, var(--grid-glow) 0.5px, transparent 3%),
+    radial-gradient(circle at 80% 70%, var(--grid-glow) 0.5px, transparent 3%),
+    radial-gradient(ellipse 120% 80% at 50% 0%, var(--formula-color) 0%, transparent 50%),
+    radial-gradient(ellipse at center, #0d0f18 0%, #07080e 100%);
+  background-size:
+    80px 80px,
+    80px 80px,
+    20px 20px,
+    20px 20px,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  animation: mathMove var(--anim-speed) linear infinite;
+  overflow: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    conic-gradient(from 0deg at 50% 50%,
+      transparent 0deg,
+      var(--formula-color) 2deg,
+      transparent 4deg,
+      var(--formula-color) 6deg,
+      transparent 8deg);
+  mask: radial-gradient(circle at 50% 50%, #000 0%, #000 70%, transparent 100%);
+  animation: formulaFlow calc(var(--anim-speed) * 0.7) ease-in-out infinite alternate;
+}
+body:hover::before {
+  animation-duration: 4s;
+}
+@keyframes mathMove {
+  0% {
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 80px 80px, 0 80px, 20px 20px, 0 20px, 0 0, 0 0, 0 0, 0 0;
+  }
+}
+@keyframes formulaFlow {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(1.4) rotate(20deg);
+    opacity: 0.35;
+  }
+}
