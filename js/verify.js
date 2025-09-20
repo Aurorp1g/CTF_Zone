@@ -12,6 +12,8 @@ function rstr(s) {
 }
 
 const cA = new Map([
+    ['morse', 'fX6DMo8t1H65yrbJZCmiYQ'],
+    ['Caesar', 'UtuLoGxSOGKoyNHDmbsREA'],
     ['shmily', '3D2691DqTjYSWTadFITTTA'],
     ['hex2Virginia', 'uGKXGwEQ/9awSM0Cen8pnw'],
     ['eerie_RSA', 'pq7exp3XZ5smpeib7r4dQw'],

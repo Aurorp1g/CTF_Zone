@@ -214,6 +214,7 @@ option:hover {
   background:rgba(0,242,255,.08);
   font-weight:700;font-size:1.1rem;
 }
+
 .problem-list{padding:.75rem;display:flex;flex-direction:column;gap:.5rem}
 .problem-item{
   display:flex;align-items:center;justify-content:space-between;
@@ -222,8 +223,35 @@ option:hover {
   transition:background var(--t);
 }
 .problem-item:hover{background:rgba(0,242,255,.06)}
-.problem-info h3{color:var(--text);font-size:1rem;margin-bottom:.25rem}
-.problem-info p{color:var(--text-dim);font-size:.85rem}
+.problem-info::before{   
+  content:'🏴';
+  font-size:1.3rem;
+  filter:drop-shadow(0 0 4px var(--prime));
+  transition:transform .3s;
+}
+.problem-item:hover .problem-info::before{
+  transform:rotate(-15deg) scale(1.15);
+  filter:drop-shadow(0 0 8px var(--second));
+}
+
+.problem-info h3{
+  font-size:1.05rem;
+  font-weight:600;
+  letter-spacing:.5px;
+  color:var(--text);
+  background:linear-gradient(90deg,var(--prime) 0%, var(--second) 100%);
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 2px rgba(0,242,255,.25);
+}
+
+.problem-info p{
+  font-size:.9rem;
+  background:linear-gradient(90deg,var(--text-dim) 0%, var(--prime) 100%);
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-top:.15rem;
+}
 .download-link{
   padding:.4rem .9rem;
   background:rgba(0,242,255,.12);

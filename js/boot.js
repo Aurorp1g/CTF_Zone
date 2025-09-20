@@ -17,7 +17,7 @@
     '',
     '>> Crypto module  ............... [OK]',
     '>> Flag validator ready.',
-    '>>'
+    '>> ...'
     ];
 
     let lineIndex = 0, charIndex = 0;

@@ -147,3 +147,130 @@ function showToast(msg) {
     document.body.appendChild(toast);
     setTimeout(() => { toast.style.animation = 'slideInRight .3s ease-out reverse'; setTimeout(() => toast.remove(), 300); }, 2500);
 }
+
+function installSolvedCardModal() {
+    const modal = document.createElement('div');
+    modal.id = 'solved-modal';
+    modal.className = 'hidden';
+    modal.innerHTML = `
+        <div class="solved-box">
+        <div class="solved-header">
+            <h3>已解决题目</h3>
+            <span class="solved-close">&times;</span>
+        </div>
+        <div class="solved-body"></div>
+        </div>`;
+    document.body.appendChild(modal);
+
+    const style = document.createElement('style');
+    style.textContent = `
+    #solved-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(13,15,24,.75);
+    backdrop-filter:blur(12px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:3000;
+    animation:fadeIn .3s ease;
+    }
+    #solved-modal.hidden{display:none}
+
+    .solved-box{
+    width:90%;
+    max-width:420px;
+    max-height:70vh;
+    background:var(--bg-card);
+    border:1px solid rgba(0,242,255,.25);
+    border-radius:var(--r);
+    box-shadow:var(--shadow),var(--glow);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    animation:zoomIn .3s ease;
+    }
+
+    .solved-header{
+    padding:1rem 1.25rem;
+    background:rgba(0,242,255,.08);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    }
+    .solved-header h3{
+    font-size:1.1rem;
+    font-weight:600;
+    letter-spacing:.5px;
+    }
+    .solved-close{
+    cursor:pointer;
+    font-size:1.5rem;
+    color:var(--text-dim);
+    transition:color .2s;
+    }
+    .solved-close:hover{color:var(--prime)}
+
+    .solved-body{
+    flex:1;
+    overflow-y:auto;
+    padding:1rem 1.25rem 1.25rem;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(90px,1fr));
+    gap:.75rem;
+    }
+    .solved-tag{
+    position:relative;
+    background:linear-gradient(135deg,rgba(0,242,255,.12) 0%, rgba(255,0,193,.12) 100%);
+    border:1px solid rgba(0,242,255,.25);
+    border-radius:calc(var(--r)/2);
+    padding:.5rem 0;
+    text-align:center;
+    font-size:.9rem;
+    font-weight:500;
+    color:var(--prime);
+    transition:transform .2s, box-shadow .2s;
+    }
+    .solved-tag:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 10px var(--prime);
+    }
+
+    .solved-empty{
+    grid-column:1/-1;
+    text-align:center;
+    color:var(--text-dim);
+    font-size:.9rem;
+    }
+
+    @keyframes fadeIn{from{opacity:0}}
+    @keyframes zoomIn{from{transform:scale(.95)}}
+
+    #solvedProblems.closest('.stat-card'){
+    cursor:pointer;
+    transition:transform .2s, box-shadow .2s;
+    }
+    #solvedProblems.closest('.stat-card'):hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 15px var(--prime);
+    }
+    `;
+    document.head.appendChild(style);
+
+    const solvedCard = document.querySelector('#solvedProblems')?.closest('.stat-card');
+    if (!solvedCard) return;
+    solvedCard.style.cursor = 'pointer';
+
+    solvedCard.addEventListener('click', () => {
+        const list = getSolvedList().sort();
+        const body = modal.querySelector('.solved-body');
+        body.innerHTML = list.length
+        ? list.map(id => `<div class="solved-tag">${id}</div>`).join('')
+        : '<div style="color:#666;text-align:center;width:100%">暂无记录</div>';
+        modal.classList.remove('hidden');
+    });
+
+    modal.querySelector('.solved-close').addEventListener('click', () => modal.classList.add('hidden'));
+    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.add('hidden'); });
+}
+document.addEventListener('DOMContentLoaded', installSolvedCardModal);
