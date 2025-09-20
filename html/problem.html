@@ -105,17 +105,5 @@
     <script src="../js/improvements.js"></script>
     <script src="../js/common.js"></script>
 
-    <script>
-        const observer=new IntersectionObserver(entries=>{
-            entries.forEach(entry=>{
-                if(entry.isIntersecting) entry.target.style.opacity=1;
-            });
-        },{threshold:0.2});
-        document.querySelectorAll('.problem-item').forEach(el=>{
-            el.style.opacity=0;
-            el.style.transition='opacity 0.6s';
-            observer.observe(el);
-        });
-    </script>
 </body>
 </html>
