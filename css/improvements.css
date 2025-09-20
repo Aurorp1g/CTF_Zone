@@ -17,6 +17,36 @@
     z-index: -1;
 }
 
+.formula-rain{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:
+    url('data:image/svg+xml,\
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">\
+    <text x="10"  y="25" font-size="18" fill="%23ff00c133" font-family="monospace">∑CTF=∫Flag</text>\
+    <text x="220" y="30" font-size="16" fill="%2300f2ff33" font-family="monospace">0x1337≡Hack</text>\
+    <text x="120" y="55" font-size="14" fill="%23ff00c133" font-family="monospace">SHA256(k)=H</text>\
+    <text x="300" y="50" font-size="17" fill="%2300f2ff33" font-family="monospace">RSA(n,e)</text>\
+    <text x="50"  y="80" font-size="15" fill="%23ff00c133" font-family="monospace">a≡g^x(mod p)</text>\
+    <text x="280" y="85" font-size="13" fill="%2300f2ff33" font-family="monospace">xor k ⊕ p</text>\
+    <text x="150" y="110" font-size="16" fill="%23ff00c133" font-family="monospace">md5(m)=128b</text>\
+    <text x="20"  y="135" font-size="14" fill="%2300f2ff33" font-family="monospace">LCG: xₙ₊₁≡(axₙ+c)%m</text>\
+    <text x="240" y="140" font-size="18" fill="%23ff00c133" font-family="monospace">CTR→AES</text>\
+    <text x="100" y="165" font-size="15" fill="%2300f2ff33" font-family="monospace">ECC:y²=x³+ax+b</text>\
+    <text x="320" y="170" font-size="13" fill="%23ff00c133" font-family="monospace">dp→d%(p-1)</text>\
+    <text x="60"  y="195" font-size="16" fill="%2300f2ff33" font-family="monospace">nonce⊕key=stream</text>\
+    <text x="200" y="200" font-size="14" fill="%23ff00c133" font-family="monospace">H(k∥m)=tag</text>\
+    </svg>');
+  background-size:400px 300px;
+  animation:formulaMove 30s linear infinite;
+}
+@keyframes formulaMove{
+  from{background-position:0 0;}
+  to{background-position:-400px 300px;}
+}
+
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -425,7 +455,7 @@
         padding: 0.5rem 0.75rem;
     }
     .site-title {
-        font-size: 1rem; 
+        font-size: 1.2rem; 
     }
     .nav-menu {
         position: fixed;

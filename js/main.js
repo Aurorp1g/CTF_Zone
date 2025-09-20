@@ -70,7 +70,7 @@ function showAdminMode() {
         <div class="admin-content">
             <i class="fas fa-crown"></i>
             <h3>管理员模式已激活</h3>
-            <p>正在跳转到管理面板...</p>
+            <p style="text-align: center; margin: 20px auto;">正在跳转...</p>
         </div>
     `;
     document.body.appendChild(t);

@@ -12,6 +12,7 @@
 </head>
 <body>
     <div id="particles-js"></div>
+    <div class="formula-rain"></div>
 
     <nav class="navbar admin-navbar">
         <div class="nav-container">
@@ -168,6 +169,10 @@
             if(window.lastHash){
                 navigator.clipboard.writeText(window.lastHash).then(()=>{
                     const toast=document.createElement('div');toast.className='toast';
+                        style.textContent = `
+                            .toast{position:fixed;top:20px;right:20px;padding:1rem 1.5rem;background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);color:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.3);z-index:2000;animation:slideInRight .3s ease-out;display:flex;align-items:center;gap:.5rem}
+                            @keyframes slideInRight{from{opacity:0;transform:translateX(100px)}to{opacity:1;transform:translateX(0)}}
+                        `;
                     toast.innerHTML='<i class="fas fa-copy"></i> 已复制到剪贴板';
                     document.body.appendChild(toast);
                     setTimeout(()=>toast.remove(),2000);

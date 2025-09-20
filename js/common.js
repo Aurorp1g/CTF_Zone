@@ -20,7 +20,7 @@ window.addEventListener('scroll', () => {
   const target = document.getElementById('footer-copyright');
   if (!target) return;
 
-const text = '\u00A9 2024 BY Aurorp1g. \u00A0 From FosuSec Crypto.';
+const text = '\u00A9 2025 BY Aurorp1g. \u00A0 From FosuSec Crypto.';
   let i = 0;
 
   function typeChar() {
