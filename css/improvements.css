@@ -417,7 +417,10 @@
         overflow-x: hidden;
         width: 100vw;
     }
-
+    html, body { 
+        height: auto; 
+        overflow-y: auto; 
+    }
     .navbar {
         padding: 0.5rem 0.75rem;
     }
@@ -530,6 +533,8 @@
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
+    html, body { height: auto; overflow-y: auto; }
+    .problem-scroll-wrapper { max-height: none; overflow: visible; }
 }
 @media (max-width: 1200px) { 
     .admin-mode-text {
