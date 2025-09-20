@@ -15,3 +15,19 @@ window.addEventListener('scroll', () => {
         navbar.style.backdropFilter = 'blur(12px)';
     }
 });
+
+(() => {
+  const target = document.getElementById('footer-copyright');
+  if (!target) return;
+
+const text = '\u00A9 2024 BY Aurorp1g. \u00A0 From FosuSec Crypto.';
+  let i = 0;
+
+  function typeChar() {
+    if (i < text.length) {
+      target.textContent += text[i++];
+      setTimeout(typeChar, 80); 
+    }
+  }
+  typeChar();
+})();

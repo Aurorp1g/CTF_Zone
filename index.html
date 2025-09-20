@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>CTF Zone</title>
 </head>
-<body class="home">
+<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- 启动遮罩 -->
     <div id="boot">
         <div class="stage">
@@ -142,7 +143,7 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2024 BY Aurorp1g.FosuSec Crypto.</p>
+            <p id="footer-copyright"></p>
             <div class="footer-links">
                 <a href="https://github.com/Aurorp1g" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://space.bilibili.com/2066996205" target="_blank"><i class="fab fa-bilibili"></i></a>
@@ -189,7 +190,7 @@
 
             const cur = document.createElement('span');
             cur.className = 'cursor';
-            cur.textContent = '|';
+            cur.textContent = '❚';
             line.append(cur);
 
             return txt;

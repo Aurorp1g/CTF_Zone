@@ -21,13 +21,25 @@ body{
   flex-direction: column;
 }
 
-.home::after {
-    content: "_";
-    animation: home-blink 1s infinite;
+#footer-copyright {
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.05em; 
+  padding-left: 1em;     
 }
 
-@keyframes home-blink {
-    50% { opacity: 0; }
+#footer-copyright::after {
+  content: '_';
+  position: absolute;
+  right: -15px;
+  bottom: -2px;
+  color: #00f2ff;
+  font-size: 1.2rem;
+  animation: footer-blink 1s infinite;
+}
+
+@keyframes footer-blink {
+  50% { opacity: 0; }
 }
 
 #boot{position:fixed;inset:0;background:#000;z-index:9999}
@@ -68,6 +80,8 @@ body{
   z-index: 1000;
 }
 .site-title{
+  white-space: nowrap;
+  min-width: 95px;
   font-size: 1.2rem;
   font-weight: 800;
   background: linear-gradient(90deg,var(--prime),var(--second));

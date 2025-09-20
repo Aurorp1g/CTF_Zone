@@ -40,9 +40,9 @@ function initStats() {
     const solved  = getSolvedProblems();
     const rate    = total ? Math.round((solved / total) * 100) : 0;
 
-    animateValue(totalEl,  0, total,  2000);
-    animateValue(solvedEl, 0, solved, 2000);
-    animateValue(rateEl,   0, rate,   2000, '%');
+    animateValue(totalEl,  0, total,  300);
+    animateValue(solvedEl, 0, solved, 300);
+    animateValue(rateEl,   0, rate,   300, '%');
 }
 
 function getTotalProblems() {
@@ -77,8 +77,8 @@ function updateStatsDisplay() {
     const solved = getSolvedProblems();
     const rate   = total ? Math.round((solved / total) * 100) : 0;
 
-    animateValue(solvedEl, parseInt(solvedEl.textContent) || 0, solved, 1000);
-    animateValue(rateEl,   parseInt(rateEl.textContent)   || 0, rate,   1000, '%');
+    animateValue(solvedEl, parseInt(solvedEl.textContent) || 0, solved, 500);
+    animateValue(rateEl,   parseInt(rateEl.textContent)   || 0, rate,   500, '%');
 }
 
 function clearInput() {
