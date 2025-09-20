@@ -47,6 +47,21 @@
   to{background-position:-400px 300px;}
 }
 
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:
+    radial-gradient(circle at 20% 30%, #ff00c166 0%, transparent 20%),
+    radial-gradient(circle at 80% 70%, #00f2ff66 0%, transparent 20%);
+  animation: pulse 8s ease-in-out infinite alternate;
+}
+@keyframes pulse{
+  from{opacity:.15;}
+  to{opacity:.35;}
+}
+
 .nav-container {
     display: flex;
     justify-content: space-between;

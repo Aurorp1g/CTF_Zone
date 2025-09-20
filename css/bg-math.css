@@ -10,8 +10,6 @@ body {
     linear-gradient(180deg, var(--grid-color) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-color) 0.5px, transparent 0.5px 20px),
     linear-gradient(180deg, var(--grid-color) 0.5px, transparent 0.5px 20px),
-    radial-gradient(circle at 20% 30%, var(--grid-glow) 0.5px, transparent 3%),
-    radial-gradient(circle at 80% 70%, var(--grid-glow) 0.5px, transparent 3%),
     radial-gradient(ellipse 120% 80% at 50% 0%, var(--formula-color) 0%, transparent 50%),
     radial-gradient(ellipse at center, #0d0f18 0%, #07080e 100%);
   background-size:
