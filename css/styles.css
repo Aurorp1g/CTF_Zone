@@ -42,19 +42,24 @@ body{
   50% { opacity: 0; }
 }
 
-#boot{position:fixed;inset:0;background:#000;z-index:9999}
+#boot{position:fixed;inset:0;background:#000;z-index:9999;font-family:"Menlo","Monaco","Consolas","Courier New",monospace}
 .stage{                    
   position:absolute;
   top:50%; left:50%;
   transform:translate(-50%,-50%);
   width:55vw; height:45vh;   
 }
-.term{                     
-  font:1.5rem/1.4 monospace;
-  color:#00f2ff;
-  padding:1rem 0;          
+#boot .term{
+  font-size: 0.95rem;
+  line-height:1.4;
+  color:#39ff14;
+  letter-spacing:.02em;
+  white-space:pre
 }
-.line{height:1.4em;white-space:pre;position:relative}
+#boot .line{
+  min-height:1.4em;
+  position:relative
+}
 .cursor{                   
   display:none;
 }
@@ -62,7 +67,6 @@ body{
   display:inline;
   animation:blink 1s steps(2,start) infinite;
 }
-.prompt{font-size:1.0rem;color:#00ffa0;}   
 .cursor{display:inline-block;animation:blink 1s steps(2,start) infinite}
 @keyframes blink{50%{opacity:0}}
 

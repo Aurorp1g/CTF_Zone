@@ -167,8 +167,22 @@
          }
 
          const term  = document.querySelector('.term');
-         const raw = ['CTF Zone...','Initialising... done','Loading challenges... 100%','Ready.'];
-         const prefix = '>>> ';
+         const raw = [
+            'CTF Zone BIOS',
+            'Copyright \u00A9 2025 Aurorp1g',
+            '',
+            'Memory check ............... 8192 KB OK',
+            '',
+            '>> Booting CTF Zone...',
+            '>> Loading challenges... 100%',
+            '>> Initialisation complete.',
+            '',
+            '>> Crypto module  ............... [OK]',
+            '>> Network stack  ............... [OK]',
+            '>> Flag validator ready.',
+            '>> System secure mode: ON',
+            '>>'
+         ];
 
          let lineIndex = 0, charIndex = 0;
 
@@ -180,10 +194,6 @@
          }
 
          function injectPrefix(line){
-            const pre = document.createElement('span');
-            pre.className = 'prompt'; 
-            pre.textContent = '>>> ';
-            line.appendChild(pre);
 
             const txt = document.createElement('span');
             txt.className = 'text';
@@ -191,7 +201,7 @@
 
             const cur = document.createElement('span');
             cur.className = 'cursor';
-            cur.textContent = '❚';
+            cur.textContent = '█';
             line.append(cur);
 
             return txt;
@@ -206,16 +216,16 @@
 
            if(charIndex < raw[lineIndex].length){
               txtSpan.textContent += raw[lineIndex][charIndex++];
-              setTimeout(type, 100);
+              setTimeout(type, 30);
             }else{
               curLine.querySelector('.cursor').remove();
               lineIndex++; charIndex = 0;
              curLine = newEmptyLine(); 
-             setTimeout(type, 1500);
+             setTimeout(type, 300);
             }
           }else{
             sessionStorage.setItem('bootDone', '1');
-            setTimeout(()=>document.getElementById('boot').remove(), 300);
+            setTimeout(()=>document.getElementById('boot').remove(), 1000);
           }
          }
          type();
