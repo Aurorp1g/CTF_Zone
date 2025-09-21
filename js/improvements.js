@@ -155,12 +155,27 @@ function showEncourageEasterEgg() {
 }
 
 const ENCOURAGE_MAP = [
-  { min: 0,   max: 19, text: '万事开头难，继续冲！',        color: '#ff00c1' },
-  { min: 20,  max: 39, text: '节奏不错，保持住~',          color: '#00f2ff' },
-  { min: 40,  max: 59, text: '已经过半，胜利在望！',        color: '#4facfe' },
-  { min: 60,  max: 79, text: '大佬请收下我的膝盖！',        color: '#f093fb' },
-  { min: 80,  max: 99, text: '封神之路近在咫尺！',          color: '#fa709a' },
-  { min: 100, max: 100, text: '全收集达成！你就是CTF之神！', color: '#ffd700' }
+  { min: 0,   max: 4,   text: '刚起步，别急，慢慢来~',         color: '#ff00c1' },
+  { min: 5,   max: 9,   text: '已经动起来了，不错哟',           color: '#f200cb' },
+  { min: 10,  max: 14,  text: '手感开始有了，继续继续',         color: '#e600d6' },
+  { min: 15,  max: 19,  text: '节奏慢慢对上了，保持住',         color: '#d900e0' },
+  { min: 20,  max: 24,  text: '五分之一啦，状态开始上来',       color: '#00f2ff' },
+  { min: 25,  max: 29,  text: '四分之一达成，感觉越来越顺',     color: '#00e0f0' },
+  { min: 30,  max: 34,  text: '三分天下已有其一！',         color: '#00cce0' },
+  { min: 35,  max: 39,  text: '三分关口，速度开始稳了',          color: '#00b8d0' },
+  { min: 40,  max: 44,  text: '四成入手，开始有点上头',         color: '#4facfe' },
+  { min: 45,  max: 49,  text: '快过半了，别松劲，再冲一波',     color: '#3a9cfc' },
+  { min: 50,  max: 54,  text: '过半啦！可以稍微喘口气，但别停', color: '#2688fc' },
+  { min: 55,  max: 59,  text: '五五关卡，手感已经热起来了',     color: '#1a7cfc' },
+  { min: 60,  max: 64,  text: '六成到手，大佬请收下我的膝盖',   color: '#f093fb' },
+  { min: 65,  max: 69,  text: '六五节点，思路开始清晰得发光',   color: '#e683f9' },
+  { min: 70,  max: 74,  text: '七成进度，进度条开始发光',     color: '#da73f7' },
+  { min: 75,  max: 79,  text: '七五关口，开始感受到收尾的节奏', color: '#cc63f5' },
+  { min: 80,  max: 84,  text: '八成达成，开始有点不舍得了',     color: '#fa709a' },
+  { min: 85,  max: 89,  text: '八五节点，手指开始不自觉加速',   color: '#f8608c' },
+  { min: 90,  max: 94,  text: '九成！封神之路近在咫尺！',   color: '#ff507c' },
+  { min: 95,  max: 99,  text: '只差临门一脚，金色传说在招手',         color: '#ff406c' },
+  { min: 100, max: 100, text: '全收集达成！你就是这个站的神！',       color: '#ffd700' }
 ];
 let lastRate = -1;
 function encourageCfg(rate) {
