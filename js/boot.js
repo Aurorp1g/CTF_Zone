@@ -6,18 +6,18 @@
 
     const term  = document.querySelector('.term');
     const raw = [
-    'CTF Zone BIOS',
+    'CTF Zone 初始化',
     'Copyright \u00A9 2025 Aurorp1g',
     '',
-    'Memory check ............ 8192 KB [OK]',
+    '正在检查环境... 环境可用 [OK]',
     '',
-    '>> Booting CTF Zone...',
-    '>> Loading challenges... 100%',
-    '>> Initialisation complete.',
+    '>> 正在加载赛博空间...',
+    '>> 题目矩阵载入进度... 100%',
+    '>> 初始化完成，欢迎白帽',
     '',
-    '>> Crypto module  ............... [OK]',
-    '>> Flag validator ready.',
-    '>> ...'
+    '>> 加密模块  ............... [OK]',
+    '>> Flag 验证服务已就绪',
+    '>> 祝你玩得开心！'
     ];
 
     let lineIndex = 0, charIndex = 0;
