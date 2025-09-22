@@ -117,7 +117,10 @@ function type(){
         <h3>验证答案</h3>
         <p>点击"执行校验"按钮，系统会验证你的答案是否正确。</p>
         <div class="guide-highlight">
-          <button class="demo-btn">执行校验</button>
+          <button class="demo-btn">
+            <i class="fas fa-check"></i>
+            <span>执行校验</span>
+          </button>
         </div>
       </div>
       
@@ -133,6 +136,10 @@ function type(){
           <div class="stat-item">
             <i class="fas fa-check-circle"></i>
             <span>已解决: 5</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-percentage"></i>
+            <span>完成率: 10%</span>
           </div>
         </div>
       </div>
@@ -182,11 +189,11 @@ function type(){
 .guide-step p{color:var(--text-dim);line-height:1.6;margin-bottom:2rem}
 .guide-highlight{background:rgba(0,242,255,.1);border:2px solid rgba(0,242,255,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0;display:flex;justify-content:center;align-items:center}
 .demo-select,.demo-input{background:rgba(0,242,255,.1);border:1px solid rgba(0,242,255,.5);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-size:1rem;width:200px}
-.demo-btn{background:linear-gradient(135deg,var(--prime),var(--second));border:none;border-radius:8px;padding:.75rem 1.5rem;color:white;font-weight:600;cursor:pointer;transition:transform .3s}
+.demo-btn{padding: 1rem 1.5rem;width: fit-content;background: var(--success-gradient);border: none;border-radius: 12px;padding:.75rem 1.5rem;color:white;font-weight:600;cursor:pointer;transition:transform .3s }
 .demo-btn:hover{transform:translateY(-2px)}
 .stats-demo{display:flex;gap:2rem;justify-content:center}
 .stat-item{display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--text-dim)}
-.stat-item i{font-size:1.5rem;color:var(--prime)}
+.stat-item i{font-size:1.5rem;background: var(--primary-gradient);background-clip: text;-webkit-text-fill-color: transparent;}
 .guide-footer{padding:2rem;border-top:1px solid rgba(0,242,255,.2)}
 .step-indicators{display:flex;justify-content:center;gap:.5rem;margin-bottom:1.5rem}
 .indicator{width:12px;height:12px;border-radius:50%;background:rgba(0,242,255,.3);transition:all .3s;cursor:pointer}
