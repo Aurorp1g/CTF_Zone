@@ -264,13 +264,17 @@ function type(){
   function closeGuide() {
     modal.style.display = 'none';
     document.body.style.overflow = '';
-    removeGuideDOM();
+    setTimeout(() => {
+      removeGuideDOM();
+    }, 3000);
   }
   function finishGuide() {
     closeGuide();
     toast.classList.add('show');
     setTimeout(() => {
       toast.classList.remove('show');
+    }, 3000);
+    setTimeout(() => {
       removeGuideDOM();
     }, 3000);
   }
