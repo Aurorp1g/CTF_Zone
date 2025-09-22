@@ -52,12 +52,12 @@ function type(){
 
     if(charIndex < raw[lineIndex].length){
         txtSpan.textContent += raw[lineIndex][charIndex++];
-        setTimeout(type, 30);
+        setTimeout(type, 90);
     }else{
         curLine.querySelector('.cursor').remove();
         lineIndex++; charIndex = 0;
         curLine = newEmptyLine(); 
-        setTimeout(type, 300);
+        setTimeout(type, 800);
     }
     }else{
     localStorage.setItem('bootDone', '1');
