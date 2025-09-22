@@ -247,6 +247,15 @@ function type(){
     if (e.key === 'ArrowRight') currentStep < totalSteps ? nextStep() : finishGuide();
   });
 
+  function removeGuideDOM() {
+    const modal = document.getElementById('newbie-guide-modal');
+    const toast = document.getElementById('guide-complete-toast');
+    const styles = document.getElementById('guide-styles');
+    modal?.remove();
+    toast?.remove();
+    styles?.remove();
+  }
+
   function showGuide() {
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
@@ -255,11 +264,15 @@ function type(){
   function closeGuide() {
     modal.style.display = 'none';
     document.body.style.overflow = '';
+    removeGuideDOM();
   }
   function finishGuide() {
     closeGuide();
     toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3000);
+    setTimeout(() => {
+      toast.classList.remove('show');
+      removeGuideDOM();
+    }, 3000);
   }
   function nextStep() {
     if (currentStep < totalSteps) goToStep(currentStep + 1);
