@@ -98,3 +98,45 @@ style.textContent = `
 @keyframes slideInRight{from{opacity:0;transform:translateX(100px)}to{opacity:1;transform:translateX(0)}}
 `;
 document.head.appendChild(style);
+
+function clearLocalCache() {
+    if (!confirm('⚠️ 确定要清空所有本地缓存吗？\n（操作不可恢复）')) return;
+
+    localStorage.removeItem('ctf-guide-seen'); 
+    localStorage.removeItem('bootDone'); 
+
+    const toast = document.createElement('div');
+    toast.className = 'toast toast-warn';
+    toast.innerHTML = '<i class="fas fa-check"></i> 本地缓存已清空';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2000);
+}
+
+const cacheStyle = document.createElement('style');
+cacheStyle.textContent = `
+.cache-danger{
+    background: linear-gradient(135deg,#ff4b4b 0%,#ff8e53 100%);
+    color: #fff;
+}
+.cache-danger:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(250, 112, 154, .4);
+}
+.cache-toast{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg,#fa709a 0%,#fee140 100%);
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    z-index: 2000;
+    animation: pulseWarn 1.5s infinite;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+@keyframes slideInRight{from{opacity:0;transform:translateX(100px)}to{opacity:1;transform:translateX(0)}}
+`;
+document.head.appendChild(cacheStyle);
