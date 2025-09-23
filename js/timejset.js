@@ -47,7 +47,7 @@ function drawCyber(canvas) {
     const rate = parseInt(document.getElementById('rate').textContent);
 
    const img = new Image();
-   img.src = 'https://file.moyubuluo.com/d/file/2020-12-18/ccfbe1ca8e5351d8041b7648db9ab532.jpg';
+   img.src = '../assets/Cyber.webp';
    img.onload = function () {
     ctx.drawImage(img, 0, 0, w, h);
 
