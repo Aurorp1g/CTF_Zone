@@ -101,7 +101,7 @@ body::after{
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 25px;
     transition: all 0.3s ease;
     position: relative;

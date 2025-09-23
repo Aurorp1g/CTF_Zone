@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>战绩时光机 | CTF Zone</title>
+  <link rel="icon" href="../assets/icon.ico" type="image/x-icon"/>
+
+  <!-- 外部样式 -->
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <link rel="stylesheet" href="../css/improvements.css"/>
+  <link rel="stylesheet" href="../css/bg-math.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- 仅用到的自定义样式 -->
+  <style>
+    /* 时间轴 */
+    .timeline{position:relative;padding-left:1.5rem}
+    .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--prime);box-shadow:0 0 8px var(--prime)}
+    .timeline-item{position:relative;margin-bottom:1.5rem}
+    .timeline-dot{position:absolute;left:-0.75rem;top:0.4rem;width:1rem;height:1rem;background:var(--prime);border-radius:50%;box-shadow:0 0 10px var(--prime)}
+    .timeline-content{background:rgba(0,242,255,.05);border:1px solid rgba(0,242,255,.25);border-radius:var(--r);padding:1rem;display:flex;align-items:center;gap:1rem;transition:transform .3s}
+    .timeline-content:hover{transform:translateY(-3px)}
+    .timeline-icon{font-size:1.5rem;color:var(--prime)}
+    .timeline-body{flex:1}
+    .timeline-title{font-weight:600;margin-bottom:.25rem}
+    .timeline-time{font-size:.8rem;color:var(--text-dim)}
+
+    /* 空状态 */
+    .empty{text-align:center;padding:3rem 1rem;color:var(--text-dim)}
+    .empty i{font-size:3rem;margin-bottom:1rem;opacity:.5}
+
+    /* 海报按钮 */
+    .poster-area{margin-top:2rem;text-align:center}
+    .poster-btn{padding:.75rem 1.5rem;background:var(--success-gradient);border:none;border-radius:25px;color:#fff;font-weight:600;cursor:pointer;transition:all .3s}
+    .poster-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,242,255,.3)}
+
+    /* 海报 modal */
+    .modal-overlay{position:fixed;inset:0;background:rgba(13,15,24,.85);backdrop-filter:blur(12px);z-index:2000;display:flex;align-items:center;justify-content:center;animation:fadeIn .3s}
+    .cyber-box{background:linear-gradient(135deg,#0d0f18 0%,#1d202f 100%);border:1px solid rgba(0,242,255,.4);border-radius:var(--r);box-shadow:0 0 20px var(--prime),0 0 40px var(--second);padding:1.5rem;display:flex;flex-direction:column;gap:1rem;max-width:95vw;max-height:95vh}
+    #cyberCanvas{width:100%;height:auto;border-radius:var(--r);box-shadow:0 0 30px rgba(0,242,255,.3)}
+    .cyber-actions{text-align:center}
+.validator-container{
+  width: 90%;
+  max-width: 900px;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0,242,255,.18);
+  border-radius: var(--r);
+  box-shadow: var(--shadow),var(--glow);
+  padding: 2.5rem 2rem;
+}
+.timeline-scroll-wrapper{           
+    position: relative;            
+    max-height: calc(100vh - 70px); 
+    overflow-y: auto;               
+    -webkit-overflow-scrolling: touch;
+    padding-top: 5rem;              
+}
+/* 时间轴内部滚动（>10 题时自动生效） */
+.timeline{
+  max-height: 60vh;      /* 视口 60% 高度 */
+  overflow-y: auto;
+  padding-right: .5rem;  /* 留滚动条位置 */
+}
+  </style>
+</head>
+
+<body>
+  <!-- 背景 -->
+  <div id="particles-js"></div>
+  <div class="formula-rain"></div>
+
+  <!-- 导航 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="../assets/icon.ico" alt="Logo" class="nav-logo"/>
+        <span class="site-title">CTF Zone</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> 首页</a></li>
+                <li class="nav-item dropdown">
+                    <a href="javascript:void(0)" class="nav-link dropbtn"><i class="fas fa-tools"></i> 解密工具 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="https://tool.jisuapi.com/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> 站长工具</a>
+                        <a href="http://www.esjson.com/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> esjson在线工具</a>
+                        <a href="http://www.hiencode.com/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> CTF 在线工具</a>
+                        <a href="https://factordb.com/index.php?" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> factordb 分解</a>
+                        <a href="https://ctf.bugku.com/tools.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> bugku 在线工具</a>
+                        <a href="https://lzltool.cn/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> LZL 在线工具</a>
+                    </div>
+                </li>
+        <li class="nav-item"><a href="../html/problem.html" class="nav-link"><i class="fas fa-list"></i> 题目列表</a></li>
+        <li class="nav-item"><a href="../html/timeline.html" class="nav-link active"><i class="fas fa-history"></i> 战绩</a></li>
+        <li class="nav-item"><a href="https://github.com/Aurorp1g" class="nav-link" target="_blank"><i class="fab fa-github"></i> 关于我</a></li>
+      </ul>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- 主内容 -->
+  <div class="timeline-scroll-wrapper">
+  <main class="main-content">
+    <div class="validator-container">
+      <div class="container-header">
+        <i class="fas fa-history fa-fw"></i>
+        <h1>战绩时光机</h1>
+        <p class="subtitle">记录你每一次破解的瞬间</p>
+      </div>
+
+      <div class="stats-container" style="margin-bottom:2rem">
+        <div class="stat-card"><i class="fas fa-trophy"></i><div class="stat-info"><h3>总题数</h3><span class="stat-number" id="total">0</span></div></div>
+        <div class="stat-card"><i class="fas fa-check-circle"></i><div class="stat-info"><h3>已解决</h3><span class="stat-number" id="solved">0</span></div></div>
+        <div class="stat-card"><i class="fas fa-percentage"></i><div class="stat-info"><h3>完成率</h3><span class="stat-number" id="rate">0%</span></div></div>
+      </div>
+
+      <div id="timeline" class="timeline"></div>
+
+      <div class="poster-area">
+        <button class="poster-btn" onclick="openCyberPoster()">
+          <i class="fas fa-eye"></i> 赛博海报
+        </button>
+      </div>
+
+      <!-- 海报 Modal -->
+      <div id="cyberModal" class="modal-overlay" style="display:none">
+        <div class="cyber-box">
+          <span class="modal-close" onclick="closeCyberPoster()">&times;</span>
+          <canvas id="cyberCanvas" width="1200" height="630"></canvas>
+          <div class="cyber-actions">
+            <button class="quick-btn" onclick="downloadCyber()">
+              <i class="fas fa-download"></i> 下载海报
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p id="footer-copyright"></p>
+      <div class="footer-links">
+        <a href="https://github.com/Aurorp1g" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://space.bilibili.com/2066996205" target="_blank"><i class="fab fa-bilibili"></i></a>
+        <a href="https://aurorp1g.github.io/" target="_blank"><i class="fas fa-blog"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 基础脚本 -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="../js/particles-config.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/verify.js"></script>
+
+  <!-- 业务脚本 -->
+  <script>
+    const STORAGE_KEYS = { SOLVED_LIST: 'ctf_solved_list' };
+    const getSolvedList = () => JSON.parse(localStorage.getItem(STORAGE_KEYS.SOLVED_LIST) || '[]');
+    const getTotal = () => (typeof cA !== 'undefined' && cA instanceof Map ? cA.size : 50);
+
+    function renderTimeline() {
+      const list = getSolvedList();
+      const total = getTotal();
+      const solved = list.length;
+      const rate = total ? Math.round((solved / total) * 100) : 0;
+
+      ['total', 'solved', 'rate'].forEach(id => document.getElementById(id).textContent = id === 'rate' ? rate + '%' : (id === 'total' ? total : solved));
+
+      const box = document.getElementById('timeline');
+      if (!solved) {
+        box.innerHTML = `<div class="empty"><i class="fas fa-box-open"></i><p>暂无记录，快去解题吧！</p></div>`;
+        return;
+      }
+      const now = Date.now();
+      box.innerHTML = list.map((id, i) => {
+        const ts = new Date(now - (solved - i) * 3 * 60 * 1000);
+        return `
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <i class="timeline-icon fas fa-flag"></i>
+              <div class="timeline-body">
+                <div class="timeline-title">${id}</div>
+                <div class="timeline-time">${ts.toLocaleString('zh-CN')}</div>
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    /* 海报相关 */
+function openCyberPoster(){
+  const cv = document.getElementById('cyberCanvas');
+  drawCyber(cv);
+  document.getElementById('cyberModal').style.display = 'flex';
+}
+function closeCyberPoster(){
+  document.getElementById('cyberModal').style.display = 'none';
+}
+
+function drawCyber(canvas){
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+
+  /* 1. 深空+网格（暗蓝紫渐变） */
+  const bg = ctx.createLinearGradient(0,0,w,h);
+  bg.addColorStop(0,'#0d0f18');
+  bg.addColorStop(1,'#2a2d45');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0,0,w,h);
+
+  /* 2. 流星拖尾（随机角度） */
+/* ---------- 真实流星 ---------- */
+const meteorCount = 60;
+for (let i = 0; i < meteorCount; i++) {
+  // 起始：顶部上方随机位置（允许超出屏幕）
+  const x = Math.random() * w * 1.2 - w * 0.1;
+  const y = -Math.random() * h * 0.3;                  // 从上方进入
+  // 向下 15° 倾斜，速度随机
+  const speed = Math.random() * 80 + 40;
+  const angle = Math.PI * 0.5 + (Math.random() - 0.5) * 0.26; // ±15°
+  const len = Math.random() * 120 + 60;                // 拖尾长度
+  const opacity = Math.random() * 0.6 + 0.3;
+
+  // 头部->尾部 渐变
+  const grad = ctx.createLinearGradient(x, y, x - Math.cos(angle) * len, y - Math.sin(angle) * len);
+  grad.addColorStop(0, `rgba(0,242,255,${opacity})`);
+  grad.addColorStop(1, `rgba(0,242,255,0)`);
+
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(x - Math.cos(angle) * len, y - Math.sin(angle) * len);
+  ctx.stroke();
+}
+
+  /* 3. 故障扫描线 */
+  for(let i=0;i<8;i++){
+    ctx.fillStyle = `rgba(0,242,255,${0.03*(i%2+1)})`;
+    ctx.fillRect(0,i*h/8,w,2);
+  }
+
+  /* 4. 左上角小徽章（完成率） */
+  const rate = parseInt(document.getElementById('rate').textContent);
+  ctx.fillStyle = 'rgba(0,242,255,.1)';
+  ctx.fillRect(60,60,120,60);
+  ctx.strokeStyle = '#00f2ff';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(60,60,120,60);
+  ctx.fillStyle = '#00f2ff';
+  ctx.font = 'bold 32px Inter';
+  ctx.textAlign = 'left';
+  ctx.fillText(rate+'%', 80, 98);
+
+  /* 5. 顶部标题（金色内发光） */
+  ctx.fillStyle = '#ffd700';
+  ctx.font = 'bold 72px Inter';
+  ctx.fillText('CTF Zone', 220, 120);
+  ctx.fillStyle = 'rgba(255,215,0,.6)';
+  ctx.fillText('CTF Zone', 220, 120); // 内阴影
+  ctx.font = '36px Inter';
+  ctx.fillStyle = '#e0e6f0';
+  ctx.fillText('战绩时光机', 220, 170);
+
+  /* 6. 中央玻璃卡片（破解数 & 完成率小字） */
+  const cardX = 700, cardY = 180, cardW = 420, cardH = 200;
+  // 玻璃底色
+  ctx.fillStyle = 'rgba(29,32,47,.55)';
+  ctx.fillRect(cardX,cardY,cardW,cardH);
+  // 玻璃边框
+  ctx.strokeStyle = 'rgba(0,242,255,.4)';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(cardX,cardY,cardW,cardH);
+
+  /* 7. 卡片内文字 */
+  const solved = getSolvedList().length;
+  ctx.fillStyle = '#00f2ff';
+  ctx.font = 'bold 48px Inter';
+  ctx.textAlign = 'center';
+  ctx.fillText(solved, cardX+cardW/2, cardY+70);
+  ctx.font = '24px Inter';
+  ctx.fillStyle = '#e0e6f0';
+  ctx.fillText('题已破解', cardX+cardW/2, cardY+100);
+  ctx.fillStyle = 'rgba(224,230,240,.8)';
+  ctx.fillText(`完成率 ${rate}%`, cardX+cardW/2, cardY+140);
+
+  /* 8. 底部金色签名 */
+  ctx.fillStyle = '#ffd700';
+  ctx.font = '28px Inter';
+  ctx.textAlign = 'left';
+  ctx.fillText('Keep hacking, keep shining.', 80, h - 60);
+}
+
+/* 下载当前 canvas（1200×630） */
+function downloadCyber(){
+  document.getElementById('cyberCanvas').toBlob(blob=>{
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'CTF-Zone-赛博战绩.png';
+    a.click();
+  });
+}
+
+    // 初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTimeline();
+    });
+  </script>
+</body>
+</html>
