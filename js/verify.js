@@ -12,7 +12,7 @@ function rstr(s) {
 }
 
 const cA = new Map([
-    ['morse', 'fX6DMo8t1H65yrbJZCmiYQ'],
+    ['morse', 'iPcJ0Ln+3uMDH4+ajT9uIQ'],
     ['Caesar', 'UtuLoGxSOGKoyNHDmbsREA'],
     ['shmily', '3D2691DqTjYSWTadFITTTA'],
     ['hex2Virginia', 'uGKXGwEQ/9awSM0Cen8pnw'],
