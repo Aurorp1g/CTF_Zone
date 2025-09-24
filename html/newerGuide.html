@@ -8,173 +8,220 @@
     <link rel="stylesheet" href="../css/bg-math.css">
     <link rel="stylesheet" href="../css/improvements.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.css" rel="stylesheet"/>
     <title>新人解题指引 | CTF Zone</title>
-<style>
-:root{
-    --bg-main      : #121212;
-    --bg-card      : #1e1e1e;
-    --bg-code      : #1e1e1e;
-    --bg-table-th  : #00d4ff;
-    --bg-table-tr  : #252525;
-    --border-color : #333;
-    --accent-cyan  : #00d4ff;
-    --accent-blue  : #008bb3;
-    --accent-red   : #f37c22;
-    --text-normal  : #e0e0e0;
-    --text-title   : #00d4ff;
-    --text-strong  : #00d4ff;
-    --shadow       : 0 8px 24px rgba(0,212,255,.15);
-    --radius       : 8px;
-    --radius-code  : 6px;
-    --font-code    : "SF Mono", "Consolas", "Courier New", monospace;
-}
+    <style>
+        :root {
+            --bg-main      : #121212;
+            --bg-card      : #1e1e1e;
+            --bg-code      : #1e1e1e;
+            --bg-table-th  : #00d4ff;
+            --bg-table-tr  : #252525;
+            --border-color : #333;
+            --accent-cyan  : #00d4ff;
+            --accent-blue  : #008bb3;
+            --accent-red   : #f37c22;
+            --text-normal  : #e0e0e0;
+            --text-title   : #00d4ff;
+            --text-strong  : #00d4ff;
+            --shadow       : 0 8px 24px rgba(0, 212, 255, .15);
+            --radius       : 8px;
+            --radius-code  : 6px;
+            --font-code    : "SF Mono", "Consolas", "Courier New", monospace;
+        }
 
-.content-card{
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 2.0;
-    letter-spacing: .1em;
-    color: var(--text-normal);
-    background: var(--bg-main);
-}
-.content-card{
-    background: var(--bg-card);
-    margin: 100px auto;
-    padding: 40px 50px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow);
-    max-width: 1200px;
-}
-@media(max-width: 800px){
-    .content-card{
-        margin: 60px 35px;
-        padding: 25px;
-    }
-}
+        .content-card {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 2.0;
+            letter-spacing: .1em;
+            color: var(--text-normal);
+            background: var(--bg-main);
+        }
 
-h1,h2,h3,h4,h5{
-    font-weight: 600;
-    margin-top: 2em;
-    margin-bottom: .6em;
-}
-h1{
-    font-size: 2.2em;
-    text-align: center;
-    border-bottom: 2px solid var(--accent-cyan);
-    padding-bottom: .4em;
-    color: var(--text-title);
-}
-h2{
-    font-size: 1.7em;
-    color: var(--accent-cyan);
-    border-left: 4px solid var(--accent-cyan);
-    padding-left: .6em;
-}
-h3{ font-size: 1.4em; color: var(--accent-blue); }
-h4{ font-size: 1.2em; color: var(--accent-blue); opacity: .9; }
-h5{ font-size: 1.1em; color: var(--accent-blue); opacity: .8; }
+        .content-card {
+            background: var(--bg-card);
+            margin: 100px auto;
+            padding: 40px 50px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            max-width: 1200px;
+        }
 
-table{
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.2em 0;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,.2);
-}
-th{
-    background: var(--bg-table-th);
-    color: #121212;
-    padding: .8em 1em;
-    text-align: left;
-}
-td{
-    background: var(--bg-table-tr);
-    padding: .7em 1em;
-    border-bottom: 1px solid var(--border-color);
-}
-tr:last-child td{ border: none; }
+        @media (max-width: 800px) {
+            .content-card {
+                margin: 60px 35px;
+                padding: 25px;
+            }
+        }
 
-blockquote{
-    margin: 1.2em 0;
-    padding: .5em 1em;
-    border-left: 4px solid var(--accent-cyan);
-    background: rgba(0,212,255,.05);
-    border-radius: 0 var(--radius) var(--radius) 0;
-}
+        h1, h2, h3, h4, h5 {
+            font-weight: 600;
+            margin-top: 2em;
+            margin-bottom: .6em;
+        }
 
-code:not(pre code){
-    background: var(--bg-code);
-    color: var(--accent-cyan);
-    padding: 2px 6px;
-    border-radius: var(--radius-code);
-    font-family: var(--font-code);
-    font-size: .95em;
-    border: 1px solid var(--border-color);
-}
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-cyan);
+            padding-bottom: .4em;
+            color: var(--text-title);
+        }
 
-pre[class*="language-"]{
-    background: var(--bg-code);
-    border-left: 4px solid var(--accent-cyan);
-    box-shadow: 0 4px 12px rgba(0,212,255,.25);
-    border-radius: var(--radius-code);
-    font-size: 14px;
-    line-height: 1.45;
-}
-div.code-toolbar > .toolbar button{
-    background: var(--accent-cyan);
-    color: var(--bg-main);
-    border-radius: 3px;
-    padding: 2px 6px;
-    font-weight: bold;
-    transition: background .2s;
-}
-div.code-toolbar > .toolbar button:hover{
-    background: #fff;
-}
+        h2 {
+            font-size: 1.7em;
+            color: var(--accent-cyan);
+            border-left: 4px solid var(--accent-cyan);
+            padding-left: .6em;
+        }
 
-.content-card a{
-    color: var(--accent-red);
-    text-decoration: none;
-    position: relative;
-}
-.content-card a::after{
-    content: '';
-    position: absolute;
-    left: 0; bottom: -2px;
-    width: 0; height: 2px;
-    background: var(--accent-red);
-    transition: width .3s;
-}
-.content-card a:hover::after{ width: 100%; }
+        h3 {
+            font-size: 1.4em;
+            color: var(--accent-blue);
+        }
 
-.content-card .tool, .content-card .challenge{
-    padding: 20px;
-    border-radius: var(--radius);
-    margin: 1.2em 0;
-    border: 1px solid var(--border-color);
-}
-.content-card .tool{ border-left: 4px solid var(--accent-cyan); }
-.content-card .challenge{ border-left: 4px solid var(--accent-red); }
+        h4 {
+            font-size: 1.2em;
+            color: var(--accent-blue);
+            opacity: .9;
+        }
 
-.content-card ul, .content-card ol{ padding-left: 1.4em; }
-.content-card li{ margin: .6em 0; }
-section.level-2 {
-  padding-left: 0;
-}
+        h5 {
+            font-size: 1.1em;
+            color: var(--accent-blue);
+            opacity: .8;
+        }
 
-section.level-3 {
-  padding-left: 0.6em;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2em 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+        }
 
-section.level-4 {
-  padding-left: 1.2em;
-}
+        th {
+            background: var(--bg-table-th);
+            color: #121212;
+            padding: .8em 1em;
+            text-align: left;
+        }
 
-section.level-5 {
-  padding-left: 1.8em;
-}
-</style>
+        td {
+            background: var(--bg-table-tr);
+            padding: .7em 1em;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:last-child td {
+            border: none;
+        }
+
+        blockquote {
+            margin: 1.2em 0;
+            padding: .5em 1em;
+            border-left: 4px solid var(--accent-cyan);
+            background: rgba(0, 212, 255, .05);
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        code:not(pre code) {
+            background: var(--bg-code);
+            color: var(--accent-cyan);
+            padding: 2px 6px;
+            border-radius: var(--radius-code);
+            font-family: var(--font-code);
+            font-size: .95em;
+            border: 1px solid var(--border-color);
+        }
+
+        pre[class*="language-"] {
+            background: var(--bg-code);
+            border-left: 4px solid var(--accent-cyan);
+            box-shadow: 0 4px 12px rgba(0, 212, 255, .25);
+            border-radius: var(--radius-code);
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        div.code-toolbar > .toolbar button {
+            background: var(--accent-cyan);
+            color: var(--bg-main);
+            border-radius: 3px;
+            padding: 2px 6px;
+            font-weight: bold;
+            transition: background .2s;
+        }
+
+        div.code-toolbar > .toolbar button:hover {
+            background: #fff;
+        }
+
+        .content-card a {
+            color: var(--accent-red);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .content-card a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: var(--accent-red);
+            transition: width .3s;
+        }
+
+        .content-card a:hover::after {
+            width: 100%;
+        }
+
+        .content-card .tool, .content-card .challenge {
+            padding: 20px;
+            border-radius: var(--radius);
+            margin: 1.2em 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .content-card .tool {
+            border-left: 4px solid var(--accent-cyan);
+        }
+
+        .content-card .challenge {
+            border-left: 4px solid var(--accent-red);
+        }
+
+        .content-card ul, .content-card ol {
+            padding-left: 1.4em;
+        }
+
+        .content-card li {
+            margin: .6em 0;
+        }
+
+        section.level-2 {
+            padding-left: 0;
+        }
+
+        section.level-3 {
+            padding-left: 0.6em;
+        }
+
+        section.level-4 {
+            padding-left: 1.2em;
+        }
+
+        section.level-5 {
+            padding-left: 1.8em;
+        }
+    </style>
 </head>
 <body>
     <div id="particles-js"></div>
@@ -211,164 +258,170 @@ section.level-5 {
         </div>
     </nav>
     <div class="problem-scroll-wrapper">
-    <main class="content-card">
-<h1 id="ctf-crypto-入门指南">CTF Crypto 入门指南 </h1>
-<section class="level-2">
-<h2 id="先导">先导 </h2>
-<p>解密密文的方式总归为两种：<font color="purple">在线解密工具的使用</font>、<font color="purple">编写对应的解密脚本</font>。像常规的编码形式（如base64、hex等），我们可以直接使用在线解密工具进行解密。而对于一些复杂的加密算法，我们需要逆向分析加密脚本来编写对应的解密脚本。<br>
-本站有收集一些在线解密的工具，可在导航栏的解密工具中找到，在尝试破解的过程中可以使用。这里讲一下解密脚本编写准备。</p>
-<h3 id="解密脚本编写前的准备">解密脚本编写前的准备 </h3>
-<section class="level-4">
-<h4 id="python开发环境配置">Python开发环境配置 </h4>
-<blockquote>
-<p>介绍：<font color="#87CEEB">Python</font> 是一门非常流行的<span style="text-decoration: underline wavy #ff4444;">编程语言</span>，以简单易学、语法简洁而闻名，常被用于网站开发、数据分析、人工智能和自动化脚本等领域。<font color="#87CEEB">VSCode</font> 是一个<span style="text-decoration: underline wavy #ff4444;">代码编辑器</span>。由微软开发，免费、轻量且功能强大，它支持各种编程语言，拥有丰富的插件生态系统，可以极大地提高编程效率。</p>
-</blockquote>
-<p>这里只给vscode＋python的配置方法，其他代码编辑器可自行搜索配置。<br>
-<a href="https://www.bilibili.com/video/BV1tF411M7hy/?spm_id_from=333.337.search-card.all.click&amp;vd_source=348051f774b468b1bd9ef0632cd78865">【教程】VScode中配置Python运行环境</a></p>
-<section class="level-4">
-<h4 id="crypto的python库">Crypto的Python库 </h4>
-<p>Python安装库的命令：</p>
-<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>pip <span class="token function">install</span> <span class="token string">'这里替换成库名'</span>
-</code></pre><blockquote>
-<p>介绍：<font color="#87CEEB">Crypto</font>经常使用到的库：</p>
-</blockquote>
-<section class="level-5">
-<h5 id="第三方库需要自己额外安装">第三方库（需要自己额外安装）： </h5>
-<ol>
-<li>pycryptodome</li>
-</ol>
-<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword keyword-import">import</span> AES<span class="token punctuation">,</span> DES<span class="token punctuation">,</span> RSA
+        <main class="content-card">
+            <h1 id="ctf-crypto-入门指南">CTF Crypto 入门指南 </h1>
+            <section class="level-2">
+                <h2 id="先导">先导 </h2>
+                <p>解密密文的方式总归为两种：<font color="purple">在线解密工具的使用</font>、<font color="purple">编写对应的解密脚本</font>。像常规的编码形式（如base64、hex等），我们可以直接使用在线解密工具进行解密。而对于一些复杂的加密算法，我们需要逆向分析加密脚本来编写对应的解密脚本。<br>
+                    本站有收集一些在线解密的工具，可在导航栏的解密工具中找到，在尝试破解的过程中可以使用。这里讲一下解密脚本编写准备。</p>
+                <h3 id="解密脚本编写前的准备">解密脚本编写前的准备 </h3>
+                <section class="level-4">
+                    <h4 id="python开发环境配置">Python开发环境配置 </h4>
+                    <blockquote>
+                        <p>介绍：<font color="#87CEEB">Python</font> 是一门非常流行的<span style="text-decoration: underline wavy #ff4444;">编程语言</span>，以简单易学、语法简洁而闻名，常被用于网站开发、数据分析、人工智能和自动化脚本等领域。<font color="#87CEEB">VSCode</font> 是一个<span style="text-decoration: underline wavy #ff4444;">代码编辑器</span>。由微软开发，免费、轻量且功能强大，它支持各种编程语言，拥有丰富的插件生态系统，可以极大地提高编程效率。</p>
+                    </blockquote>
+                    <p>这里只给vscode＋python的配置方法，其他代码编辑器可自行搜索配置。<br>
+                        <a href="https://www.bilibili.com/video/BV1tF411M7hy/?spm_id_from=333.337.search-card.all.click&amp;vd_source=348051f774b468b1bd9ef0632cd78865">【教程】VScode中配置Python运行环境</a></p>
+                    <section class="level-4">
+                        <h4 id="crypto的python库">Crypto的Python库 </h4>
+                        <p>Python安装库的命令：</p>
+                        <pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>pip <span class="token function">install</span> <span class="token string">'这里替换成库名'</span>
+</code></pre>
+                        <blockquote>
+                            <p>介绍：<font color="#87CEEB">Crypto</font>经常使用到的库：</p>
+                        </blockquote>
+                        <section class="level-5">
+                            <h5 id="第三方库需要自己额外安装">第三方库（需要自己额外安装）： </h5>
+                            <ol>
+                                <li>pycryptodome</li>
+                            </ol>
+                            <pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword keyword-import">import</span> AES<span class="token punctuation">,</span> DES<span class="token punctuation">,</span> RSA
 <span class="token keyword keyword-from">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword keyword-import">import</span> bytes_to_long<span class="token punctuation">,</span> long_to_bytes
 <span class="token keyword keyword-from">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>Padding <span class="token keyword keyword-import">import</span> pad<span class="token punctuation">,</span> unpad
-</code></pre><ul>
-<li>
-<p>用途：最全面的密码学库，支持对称/非对称加密、哈希、数字签名等</p>
-</li>
-<li>
-<p>特点：CTF中最主流的库，API设计友好</p>
-</li>
-</ul>
-<ol start="2">
-<li>gmpy2</li>
-</ol>
-<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> gmpy2
-<span class="token keyword keyword-from">from</span> gmpy2 <span class="token keyword keyword-import">import</span> powmod<span class="token punctuation">,</span> gcd<span class="token punctuation">,</span> invert
-</code></pre><ul>
-<li>
-<p>用途：大整数运算、RSA相关计算、模运算</p>
-</li>
-<li>
-<p>特点：高性能数学运算，RSA题必备</p>
-</li>
-</ul>
-<ol start="3">
-<li>sympy</li>
-</ol>
-<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> sympy <span class="token keyword keyword-import">import</span> symbols<span class="token punctuation">,</span> solve<span class="token punctuation">,</span> factorint
-</code></pre><ul>
-<li>
-<p>用途：符号计算、方程求解、因数分解</p>
-</li>
-<li>
-<p>特点：数学推导和求解</p>
-</li>
-</ul>
-<p>安装以上库的命令：</p>
-<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>pip <span class="token function">install</span> pycryptodome gmpy2 sympy
 </code></pre>
-</section>
-<section class="level-5">
-<h5 id="标准库无需安装python自带">标准库（无需安装，Python自带）： </h5>
-<ol>
-<li>hashlib</li>
-</ol>
-<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> hashlib
+                            <ul>
+                                <li>
+                                    <p>用途：最全面的密码学库，支持对称/非对称加密、哈希、数字签名等</p>
+                                </li>
+                                <li>
+                                    <p>特点：CTF中最主流的库，API设计友好</p>
+                                </li>
+                            </ul>
+                            <ol start="2">
+                                <li>gmpy2</li>
+                            </ol>
+                            <pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> gmpy2
+<span class="token keyword keyword-from">from</span> gmpy2 <span class="token keyword keyword-import">import</span> powmod<span class="token punctuation">,</span> gcd<span class="token punctuation">,</span> invert
+</code></pre>
+                            <ul>
+                                <li>
+                                    <p>用途：大整数运算、RSA相关计算、模运算</p>
+                                </li>
+                                <li>
+                                    <p>特点：高性能数学运算，RSA题必备</p>
+                                </li>
+                            </ul>
+                            <ol start="3">
+                                <li>sympy</li>
+                            </ol>
+                            <pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> sympy <span class="token keyword keyword-import">import</span> symbols<span class="token punctuation">,</span> solve<span class="token punctuation">,</span> factorint
+</code></pre>
+                            <ul>
+                                <li>
+                                    <p>用途：符号计算、方程求解、因数分解</p>
+                                </li>
+                                <li>
+                                    <p>特点：数学推导和求解</p>
+                                </li>
+                            </ul>
+                            <p>安装以上库的命令：</p>
+                            <pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>pip <span class="token function">install</span> pycryptodome gmpy2 sympy
+</code></pre>
+                        </section>
+                        <section class="level-5">
+                            <h5 id="标准库无需安装python自带">标准库（无需安装，Python自带）： </h5>
+                            <ol>
+                                <li>hashlib</li>
+                            </ol>
+                            <pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> hashlib
 hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> hashlib<span class="token punctuation">.</span>sha256<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre><ul>
-<li>
-<p>用途：哈希函数计算</p>
-</li>
-<li>
-<p>特点：Python内置，无需安装</p>
-</li>
-</ul>
-<ol start="5">
-<li>base64</li>
-</ol>
-<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> base64
+</code></pre>
+                            <ul>
+                                <li>
+                                    <p>用途：哈希函数计算</p>
+                                </li>
+                                <li>
+                                    <p>特点：Python内置，无需安装</p>
+                                </li>
+                            </ul>
+                            <ol start="5">
+                                <li>base64</li>
+                            </ol>
+                            <pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> base64
 base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> base64<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre><ul>
-<li>
-<p>用途：Base64编码解码</p>
-</li>
-<li>
-<p>特点：处理各种编码格式</p>
-</li>
-</ul>
-</section>
-</section>
-</section>
-</section>
-<h2 id="1-密码学基础概念">1. 密码学基础概念 </h2>
-<p>密码学是CTF比赛中的重要领域，主要涉及加密、解密和破解技术。以下是核心概念：</p>
-<ul>
-<li><strong>明文（Plaintext）</strong>：原始未加密的信息</li>
-<li><strong>密文（Ciphertext）</strong>：加密后的信息</li>
-<li><strong>密钥（Key）</strong>：加密/解密所需的参数</li>
-<li><strong>算法（Algorithm）</strong>：加密/解密的数学过程</li>
-</ul>
-<p>在ctf夺旗赛中，crypto（密码学）类型题目会提供加密过的密文（也会带有加密脚本，以及各种各类提示加密方式的信息）。<br>
-<font color="green">我们的任务就是通过比赛方提供的密文，结合题目提供的明显的或者隐晦的信息来破解出明文。</font><br>
-对于本站的题目，我们最后得到的<font color="red">明文会带有flag{...}</font>,或者需要我们自己<font color="red">手动添加flag{ }来包裹我们获取的明文</font>，然后再进行提交。</p>
-<h2 id="2-新手解题须知">2. 新手解题须知 </h2>
-<blockquote>
-<p>解题过程中，要注意记录下解题的过程和思路，内容包括但不限于遇到的困难，遇到困难怎么寻找方法的，怎么尝试解决的。<font color="red">不是解出题目了才记笔记，即使没有解除题目也没关系，考核注重发掘个人学习能力、思考分析能力、以及总结的能力</font></p>
-</blockquote>
-<ul>
-<li>本站所有的题目都参照了常规的密码学加密算法，不会有特别复杂的、个人设计的算法。</li>
-<li>所有题目的提示可能隐藏在<font color="red">题目、题目描述、加密脚本、注释</font>等地方。</li>
-<li>对于难以分析出加密方式的题目，要<font color="purple">仔细留意题目（或者文件名）</font>可能提供的信息，以及留意密文的形式，如<font color="red">base64编码（可能文本带有标志"=="）、hex编码（十六进制数）</font>等。</li>
-<li><font color="red" style="font-weight:bold">重要的一点： 本次考核允许使用AI工具来分析和破解题目。注意记录下使用的AI工具，以及破解的过程(怎么问的，关键词是什么)。</font></li>
-</ul>
-<h2 id="3-本次考核涉及的知识点">3. 本次考核涉及的知识点 </h2>
-<blockquote>
-<p>鉴于参加考核的都是零基础，刚开始去分析并破解密文会有很大的难度，这里提供一下本次考核五道加密题涉及的知识点以及对应的学习资源。</p>
-</blockquote>
-<ul>
-<li>
-<p>其中有两道题，一道的加密中使用了将图片转化为base64编码的方法，另一道使用了将图片转化为hex编码的方法。</p>
-</li>
-<li>
-<p>摩斯电码：<a href="https://zhuanlan.zhihu.com/p/653720855">带你了解“摩尔斯电码到密码学”</a></p>
-</li>
-<li>
-<p>凯撒密码：<a href="https://zhuanlan.zhihu.com/p/5617591506">【古典密码】凯撒密码与相关变种密码</a></p>
-</li>
-<li>
-<p>维吉尼亚密码：<br>
-<a href="https://zhuanlan.zhihu.com/p/111611977">维吉尼亚密码的原理及破解</a></p>
-</li>
-<li>
-<p>base64编码：<br>
-<a href="https://zhuanlan.zhihu.com/p/696546724">【密码学】base64编码</a><br>
-<a href="https://blog.csdn.net/sunyctf/article/details/125527656">Base64详解：玩转图片Base64编码</a></p>
-</li>
-<li>
-<p>哈希函数：<br>
-<a href="https://blog.csdn.net/m0_74171054/article/details/141782642?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522c2f1ab90632ec0ce5fccfbf2cc63f409%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=c2f1ab90632ec0ce5fccfbf2cc63f409&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-141782642-null-null.142%5Ev102%5Epc_search_result_base2&amp;utm_term=%E5%93%88%E5%B8%8C&amp;spm=1018.2226.3001.4187">哈希详解</a><br>
-<a href="https://blog.csdn.net/qq_69100706/article/details/140648506">破解哈希（ctf）</a></p>
-</li>
-<li>
-<p>RSA:<br>
-<a href="https://blog.csdn.net/qq_46145027/article/details/125047313">[CTF密码学]RSA相关题目解题方法与python脚本总结（附例题）</a><br>
-<a href="https://www.bilibili.com/opus/578318557589685937">【CTF-RSA】sage脚本_p高位攻击</a></p>
-</li>
-<li>
-<p>综合：<a href="https://www.cnblogs.com/sollyyy/p/18796994">CTF 密码学（Crypto）方向深度解析</a></p>
-</li>
-</ul>
-<p><strong>记住</strong>：密码学题目只要找对提示，就很容易找到突破口！</p>
-    </main>
+</code></pre>
+                            <ul>
+                                <li>
+                                    <p>用途：Base64编码解码</p>
+                                </li>
+                                <li>
+                                    <p>特点：处理各种编码格式</p>
+                                </li>
+                            </ul>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <h2 id="1-密码学基础概念">1. 密码学基础概念 </h2>
+            <p>密码学是CTF比赛中的重要领域，主要涉及加密、解密和破解技术。以下是核心概念：</p>
+            <ul>
+                <li><strong>明文（Plaintext）</strong>：原始未加密的信息</li>
+                <li><strong>密文（Ciphertext）</strong>：加密后的信息</li>
+                <li><strong>密钥（Key）</strong>：加密/解密所需的参数</li>
+                <li><strong>算法（Algorithm）</strong>：加密/解密的数学过程</li>
+            </ul>
+            <p>在ctf夺旗赛中，crypto（密码学）类型题目会提供加密过的密文（也会带有加密脚本，以及各种各类提示加密方式的信息）。<br>
+                <font color="green">我们的任务就是通过比赛方提供的密文，结合题目提供的明显的或者隐晦的信息来破解出明文。</font><br>
+                对于本站的题目，我们最后得到的<font color="red">明文会带有flag{...}</font>,或者需要我们自己<font color="red">手动添加flag{ }来包裹我们获取的明文</font>，然后再进行提交。</p>
+            <h2 id="2-新手解题须知">2. 新手解题须知 </h2>
+            <blockquote>
+                <p>解题过程中，要注意记录下解题的过程和思路，内容包括但不限于遇到的困难，遇到困难怎么寻找方法的，怎么尝试解决的。<font color="red">不是解出题目了才记笔记，即使没有解除题目也没关系，考核注重发掘个人学习能力、思考分析能力、以及总结的能力</font></p>
+            </blockquote>
+            <ul>
+                <li>本站所有的题目都参照了常规的密码学加密算法，不会有特别复杂的、个人设计的算法。</li>
+                <li>所有题目的提示可能隐藏在<font color="red">题目、题目描述、加密脚本、注释</font>等地方。</li>
+                <li>对于难以分析出加密方式的题目，要<font color="purple">仔细留意题目（或者文件名）</font>可能提供的信息，以及留意密文的形式，如<font color="red">base64编码（可能文本带有标志"=="）、hex编码（十六进制数）</font>等。</li>
+                <li><font color="red" style="font-weight:bold">重要的一点： 本次考核允许使用AI工具来分析和破解题目。注意记录下使用的AI工具，以及破解的过程(怎么问的，关键词是什么)。</font></li>
+            </ul>
+            <h2 id="3-本次考核涉及的知识点">3. 本次考核涉及的知识点 </h2>
+            <blockquote>
+                <p>鉴于参加考核的都是零基础，刚开始去分析并破解密文会有很大的难度，这里提供一下本次考核五道加密题涉及的知识点以及对应的学习资源。</p>
+            </blockquote>
+            <ul>
+                <li>
+                    <p>其中有两道题，一道的加密中使用了将图片转化为base64编码的方法，另一道使用了将图片转化为hex编码的方法。</p>
+                </li>
+                <li>
+                    <p>摩斯电码：<a href="https://zhuanlan.zhihu.com/p/653720855">带你了解“摩尔斯电码到密码学”</a></p>
+                </li>
+                <li>
+                    <p>凯撒密码：<a href="https://zhuanlan.zhihu.com/p/5617591506">【古典密码】凯撒密码与相关变种密码</a></p>
+                </li>
+                <li>
+                    <p>维吉尼亚密码：<br>
+                        <a href="https://zhuanlan.zhihu.com/p/111611977">维吉尼亚密码的原理及破解</a></p>
+                </li>
+                <li>
+                    <p>base64编码：<br>
+                        <a href="https://zhuanlan.zhihu.com/p/696546724">【密码学】base64编码</a><br>
+                        <a href="https://blog.csdn.net/sunyctf/article/details/125527656">Base64详解：玩转图片Base64编码</a></p>
+                </li>
+                <li>
+                    <p>哈希函数：<br>
+                        <a href="https://blog.csdn.net/m0_74171054/article/details/141782642?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522c2f1ab90632ec0ce5fccfbf2cc63f409%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=c2f1ab90632ec0ce5fccfbf2cc63f409&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-141782642-null-null.142%5Ev102%5Epc_search_result_base2&amp;utm_term=%E5%93%88%E5%B8%8C&amp;spm=1018.2226.3001.4187">哈希详解</a><br>
+                        <a href="https://blog.csdn.net/qq_69100706/article/details/140648506">破解哈希（ctf）</a></p>
+                </li>
+                <li>
+                    <p>RSA:<br>
+                        <a href="https://blog.csdn.net/qq_46145027/article/details/125047313">[CTF密码学]RSA相关题目解题方法与python脚本总结（附例题）</a><br>
+                        <a href="https://www.bilibili.com/opus/578318557589685937">【CTF-RSA】sage脚本_p高位攻击</a></p>
+                </li>
+                <li>
+                    <p>综合：<a href="https://www.cnblogs.com/sollyyy/p/18796994">CTF 密码学（Crypto）方向深度解析</a></p>
+                </li>
+            </ul>
+            <p><strong>记住</strong>：密码学题目只要找对提示，就很容易找到突破口！</p>
+        </main>
     </div>
 
     <footer class="footer">
@@ -387,29 +440,24 @@ base64<span class="token punctuation">.</span>b64encode<span class="token punctu
     <script src="../js/improvements.js"></script>
     <script src="../js/common.js"></script>
 
-<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
-
-<script>
-document.querySelectorAll('pre code').forEach(function(block){
-    if(!block.className.match(/language-\w+/)){
-        block.classList.add('language-python');
-    }
-    block.parentElement.classList.add('line-numbers');
-});
-Prism.highlightAll();
-</script>
+    <script>
+        document.querySelectorAll('pre code').forEach(function (block) {
+            if (!block.className.match(/language-\w+/)) {
+                block.classList.add('language-python');
+            }
+            block.parentElement.classList.add('line-numbers');
+        });
+        Prism.highlightAll();
+    </script>
 </body>
 </html>
