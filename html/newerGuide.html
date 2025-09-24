@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/bg-math.css">
     <link rel="stylesheet" href="../css/improvements.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>纯新人解题指引 | CTF Zone</title>
+    <title>新人解题指引 | CTF Zone</title>
 <style>
 :root{
     --bg-main      : #121212;
@@ -216,14 +216,14 @@ section.level-5 {
 <section class="level-2">
 <h2 id="先导">先导 </h2>
 <p>解密密文的方式总归为两种：<font color="purple">在线解密工具的使用</font>、<font color="purple">编写对应的解密脚本</font>。像常规的编码形式（如base64、hex等），我们可以直接使用在线解密工具进行解密。而对于一些复杂的加密算法，我们需要逆向分析加密脚本来编写对应的解密脚本。<br>
-本站有收集一些在线解密的工具，在尝试破解的过程中可以使用，这里讲一下解密脚本编写准备。</p>
+本站有收集一些在线解密的工具，可在导航栏的解密工具中找到，在尝试破解的过程中可以使用。这里讲一下解密脚本编写准备。</p>
 <h3 id="解密脚本编写前的准备">解密脚本编写前的准备 </h3>
 <section class="level-4">
 <h4 id="python开发环境配置">Python开发环境配置 </h4>
 <blockquote>
 <p>介绍：<font color="#87CEEB">Python</font> 是一门非常流行的<span style="text-decoration: underline wavy #ff4444;">编程语言</span>，以简单易学、语法简洁而闻名，常被用于网站开发、数据分析、人工智能和自动化脚本等领域。<font color="#87CEEB">VSCode</font> 是一个<span style="text-decoration: underline wavy #ff4444;">代码编辑器</span>。由微软开发，免费、轻量且功能强大，它支持各种编程语言，拥有丰富的插件生态系统，可以极大地提高编程效率。</p>
 </blockquote>
-<p>这里只给vscode＋python的配置方法，其他I代码编辑器可自行搜索配置。<br>
+<p>这里只给vscode＋python的配置方法，其他代码编辑器可自行搜索配置。<br>
 <a href="https://www.bilibili.com/video/BV1tF411M7hy/?spm_id_from=333.337.search-card.all.click&amp;vd_source=348051f774b468b1bd9ef0632cd78865">【教程】VScode中配置Python运行环境</a></p>
 <section class="level-4">
 <h4 id="crypto的python库">Crypto的Python库 </h4>
@@ -319,7 +319,7 @@ base64<span class="token punctuation">.</span>b64encode<span class="token punctu
 </ul>
 <p>在ctf夺旗赛中，crypto（密码学）类型题目会提供加密过的密文（也会带有加密脚本，以及各种各类提示加密方式的信息）。<br>
 <font color="green">我们的任务就是通过比赛方提供的密文，结合题目提供的明显的或者隐晦的信息来破解出明文。</font><br>
-在本站的题目，我们最后得到的<font color="red">明文会带有flag{...}</font>,或者需要我们自己<font color="red">手动添加flag{ }来包裹我们获取的明文</font>，然后再进行提交。</p>
+对于本站的题目，我们最后得到的<font color="red">明文会带有flag{...}</font>,或者需要我们自己<font color="red">手动添加flag{ }来包裹我们获取的明文</font>，然后再进行提交。</p>
 <h2 id="2-新手解题须知">2. 新手解题须知 </h2>
 <blockquote>
 <p>解题过程中，要注意记录下解题的过程和思路，内容包括但不限于遇到的困难，遇到困难怎么寻找方法的，怎么尝试解决的。<font color="red">不是解出题目了才记笔记，即使没有解除题目也没关系，考核注重发掘个人学习能力、思考分析能力、以及总结的能力</font></p>
@@ -336,7 +336,7 @@ base64<span class="token punctuation">.</span>b64encode<span class="token punctu
 </blockquote>
 <ul>
 <li>
-<p>有两道题，一道的加密中使用了将图片转化为base64编码的方法，另一道使用了将图片转化为hex编码的方法。</p>
+<p>其中有两道题，一道的加密中使用了将图片转化为base64编码的方法，另一道使用了将图片转化为hex编码的方法。</p>
 </li>
 <li>
 <p>摩斯电码：<a href="https://zhuanlan.zhihu.com/p/653720855">带你了解“摩尔斯电码到密码学”</a></p>
