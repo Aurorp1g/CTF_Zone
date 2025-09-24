@@ -59,6 +59,15 @@ function getSolvedList() {
     return JSON.parse(localStorage.getItem(STORAGE_KEYS.SOLVED_LIST) || '[]');
 }
 
+function markProblemAsSolved(id) {
+    const list = getSolvedList();
+    if (list.includes(id)) return false;
+    list.push(id);
+    localStorage.setItem(STORAGE_KEYS.SOLVED_LIST, JSON.stringify(list));
+    updateStatsDisplay();
+    showEncourageEasterEgg();
+    return true;
+}
 
 function updateStatsDisplay() {
     const solvedEl = document.getElementById('solvedProblems');

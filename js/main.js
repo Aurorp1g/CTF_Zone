@@ -22,27 +22,17 @@ function showLoading() {
         </div>`;
 }
 
-(() => {
-function markProblemAsSolved(id) {
-    const list = getSolvedList();
-    if (list.includes(id)) return false;
-    list.push(id);
-    localStorage.setItem(STORAGE_KEYS.SOLVED_LIST, JSON.stringify(list));
-    updateStatsDisplay();
-    showEncourageEasterEgg();
-    return true;
-}
-window.validateData = async function () {
+async function validateData() {
     const q = document.getElementById('questionSelect').value.trim();
     const v = document.getElementById('userInput').value.trim();
     const r = document.getElementById('result');
 
     if (!q && bm(v) === 'Ku/DQgCilKPMfbgbQ6gYcw') {
-        window.showAdminMode();
+        showAdminMode();
         return;
     }
 
-    window.showLoading();
+    showLoading();
 
     setTimeout(() => {
         if (!q) { r.innerHTML = '<div class="error"><i class="fas fa-exclamation-triangle"></i> 请选择要校验的题目</div>'; return; }
@@ -58,8 +48,8 @@ window.validateData = async function () {
                         <i class="fas fa-check-circle"></i>
                         <div><strong>验证成功！</strong><p>flag正确，恭喜解题成功！${isNew ? ' (新解锁)' : ''}</p></div>
                     </div>`;
-                if (isNew) window.showToast('🎉 完成新题目！');
-                window.initQuestionSelect();
+                if (isNew) showToast('🎉 完成新题目！');
+                initQuestionSelect();
             } else {
                 r.innerHTML = `
                     <div class="error">
@@ -71,9 +61,7 @@ window.validateData = async function () {
             r.innerHTML = `<div class="error"><i class="fas fa-exclamation-triangle"></i> 处理错误：${e.message || '无效输入'}</div>`;
         }
     }, 500);
-};
-})();
-
+}
 
 function showAdminMode() {
     const t = document.createElement('div');
